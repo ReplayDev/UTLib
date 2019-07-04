@@ -1,10 +1,12 @@
 utlib_sources = [
+    'data/thumbnail.vala',
     'data/video.vala'
 ]
 
 dependencies = [
     glib_dep,
     gobject_dep,
+    gee_dep
 ]
 
 utlib_version = meson.project_version ()

@@ -36,5 +36,89 @@ namespace Utlib.Data {
          * The ID that YouTube uses to uniquely identify the video.
          */
         public string id { get; set; }
+
+        /**
+         * The ''``snippet``'' object contains basic details about the video, such as its title, description, and
+         * catogory.
+         */
+        public VideoSnippet snippet { get; set; }
+    }
+
+    public class VideoSnippet : Object {
+
+        /**
+         * The date and time that the video was published.
+         */
+        public DateTime published_at { get; set; }
+
+        /**
+         * The ID that YouTube uses to uniquely identify the channel that the video was uploaded to.
+         */
+        public string channel_id { get; set; }
+
+        /**
+         * The video's title.
+         */
+        public string title { get; set; }
+
+        /**
+         * The video's description.
+         */
+        public string description { get; set; }
+
+        /**
+         * A map of thumbnails images associated with the video.
+         */
+        public Gee.HashMap<string, Thumbnail> thumbnails { get; set; }
+
+        /**
+         * Channel title for the channel that the video belongs to.
+         */
+        public string channel_title { get; set; }
+
+        /**
+         * A list of keyword tags associated with the video.
+         */
+        public Gee.ArrayList<string> tags { get; set; }
+
+        /**
+         * The YouTube video category associated with the video.
+         */
+        public string category_id { get; set; }
+
+        /**
+         * Indicates if the video is an upcoming/active live broadcast.
+         */
+        public string live_broadcast_content { get; set; }
+
+        /**
+         * The language of the text in the ''``video``'' resource's ''``snippet.title``'' and ''``snippet.description''``
+         * properties.
+         */
+        public string default_language { get; set; }
+
+        /**
+         * The ''``snippet.localized``'' object contains either a localized title and description for the video or the
+         * title in the default language for the video's metadata.
+         */
+        public VideoLocalization localized { get; set; }
+
+        /**
+         * The ''``default_audio_language``'' property specifies the language spoken in the video's default audio track.
+         */
+        public string default_audio_language { get; set; }
+    }
+
+    public class VideoLocalization : Object {
+
+        /**
+         * The localized video title.
+         */
+        public string title { get; set; }
+
+        /**
+         * The localized video description.
+         */
+        public string description { get; set; }
     }
 }
