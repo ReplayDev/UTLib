@@ -1,7 +1,7 @@
-utlib_sources = [
+utlib_sources = files (
     'data/thumbnail.vala',
     'data/video.vala'
-]
+)
 
 dependencies = [
     glib_dep,
