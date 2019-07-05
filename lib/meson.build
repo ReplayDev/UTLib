@@ -1,6 +1,9 @@
 utlib_sources = files (
+    'data/video/video-localization.vala',
+    'data/video/video-snippet.vala',
+    'data/video/video.vala',
+
     'data/thumbnail.vala',
-    'data/video.vala'
 )
 
 dependencies = [

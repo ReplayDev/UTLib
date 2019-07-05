@@ -17,33 +17,6 @@
 
 namespace Utlib {
 
-    /**
-     * A {@link Utlib.Video} resource represents a YouTube video.
-     */
-    public class Video : Object {
-
-        /**
-         * Identifies the API resource's type. The value will be ``youtube\#video``.
-         */
-        public string? kind { get; set; }
-
-        /**
-         * The Etag of this resource.
-         */
-        public string? etag { get; set; }
-
-        /**
-         * The ID that YouTube uses to uniquely identify the video.
-         */
-        public string? id { get; set; }
-
-        /**
-         * The {@link Utlib.VideoSnippet} object contains basic details about the video, such as its title, description,
-         * and catogory.
-         */
-        public VideoSnippet snippet { get; set; }
-    }
-
     public class VideoSnippet : Object {
 
         /**
@@ -151,18 +124,5 @@ namespace Utlib {
          * default audio track.
          */
         public string default_audio_language { get; set; }
-    }
-
-    public class VideoLocalization : Object {
-
-        /**
-         * The localized video title.
-         */
-        public string title { get; set; }
-
-        /**
-         * The localized video description.
-         */
-        public string description { get; set; }
     }
 }
