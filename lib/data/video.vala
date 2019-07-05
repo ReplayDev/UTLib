@@ -25,17 +25,17 @@ namespace Utlib {
         /**
          * Identifies the API resource's type. The value will be ``youtube\#video``.
          */
-        public string kind { get; set; }
+        public string? kind { get; set; }
 
         /**
          * The Etag of this resource.
          */
-        public string etag { get; set; }
+        public string? etag { get; set; }
 
         /**
          * The ID that YouTube uses to uniquely identify the video.
          */
-        public string id { get; set; }
+        public string? id { get; set; }
 
         /**
          * The {@link Utlib.VideoSnippet} object contains basic details about the video, such as its title, description,
@@ -65,7 +65,7 @@ namespace Utlib {
         /**
          * The ID that YouTube uses to uniquely identify the channel that the video was uploaded to.
          */
-        public string channel_id { get; set; }
+        public string? channel_id { get; set; }
 
         /**
          * The video's title.
@@ -74,7 +74,7 @@ namespace Utlib {
          * ``<`` and ``>``. You must set a value for this property if you call the {@link Utlib.VideosResource.update}
          * method and are updating the {@link Utlib.Video.snippet} part of a {@link Utlib.Video} resource.
          */
-        public string title { get; set; }
+        public string? title { get; set; }
 
         /**
          * The video's description.
@@ -82,7 +82,7 @@ namespace Utlib {
          * The property value has a maximum length of 5000 bytes and may contain all valid UTF-8 characters except ``<``
          * and ``>``.
          */
-        public string description { get; set; }
+        public string? description { get; set; }
 
         /**
          * A map of thumbnails images associated with the video.
@@ -95,7 +95,7 @@ namespace Utlib {
         /**
          * Channel title for the channel that the video belongs to.
          */
-        public string channel_title { get; set; }
+        public string? channel_title { get; set; }
 
         /**
          * A list of keyword tags associated with the video.
