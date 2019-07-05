@@ -18,7 +18,7 @@
 namespace Utlib {
 
     /**
-     * A ``video`` resource represents a YouTube video.
+     * A ``Video`` resource represents a YouTube video.
      */
     public class Video : Object {
 
@@ -48,6 +48,17 @@ namespace Utlib {
 
         /**
          * The date and time that the video was published.
+         *
+         * Note that this time might be different than the time that the video was uploaded. For example, if a video is
+         * uploaded as a private video and then made public at a later time, this property will specify the time that
+         * the video was made public.
+         *
+         * There are a couple of special cases:
+         *
+         *  * If a video is uploaded as a private video and the video metadata is retrieved by the channel owner, then the property value specifies the date and time that the video was uploaded.
+         *  * If a video is uploaded as an unlisted video, the property value also specifies the date and time that the video was uploaded. In this case, anyone who knows the video's unique video ID can retrieve the video metadata.
+         *
+         * The value is specified in [[https://www.w3.org/TR/NOTE-datetime|ISO 8601]] (''``YYYY-MM-DDYhh:mm:ss.sZ``'') format.
          */
         public DateTime published_at { get; set; }
 
@@ -58,16 +69,26 @@ namespace Utlib {
 
         /**
          * The video's title.
+         *
+         * The property value has a maximum length of 100 characters and may contain all valid UTF-8 characters except
+         * ``<`` and ``>``. You must set a value for this property if you call the ''``videos.update``'' method and are
+         * updating the ''``snippet``'' part of a ''``video``'' resource.
          */
         public string title { get; set; }
 
         /**
          * The video's description.
+         *
+         * The property value has a maximum length of 5000 bytes and may contain all valid UTF-8 characters except ``<``
+         * and ``>``.
          */
         public string description { get; set; }
 
         /**
          * A map of thumbnails images associated with the video.
+         *
+         * For each object in the map, the key is the name of the thumbnail image, and the value is an object that
+         * contains other information about the thumbnail.
          */
         public Gee.HashMap<string, Thumbnail> thumbnails { get; set; }
 
@@ -78,21 +99,37 @@ namespace Utlib {
 
         /**
          * A list of keyword tags associated with the video.
+         *
+         * Tags may contain spaces. The property value has a maximum length of 500 characters. Note the following rules
+         * regarding the way the character limit is calculated:
+         *
+         *  * The property value is a list, and commas between items in the list count toward the limit.
+         *  * If a tag contains a space, the API server handles the tag value as though it were wrapped in quotation marks, and the quotation marks count toward the character limit. So, for the purposes of character limits, the tag ''Foo-Baz'' contains seven characters, but the tag ''Foo Baz'' contains nine characters.
          */
         public Gee.ArrayList<string> tags { get; set; }
 
         /**
          * The YouTube video category associated with the video.
+         *
+         * You must set a value for this property if you call the ''``videos.update``'' method and are updating the
+         * ''``snippet``'' part of a ''``video``'' resource.
          */
         public string category_id { get; set; }
 
         /**
-         * Indicates if the video is an upcoming/active live broadcast.
+         * Indicates if the video is an upcoming/active live broadcast. Or it's "none" if the video is not an
+         * upcoming/active live broadcast.
+         *
+         * Valid values for this property are:
+         *
+         *  * ''``live``''
+         *  * ''``none``''
+         *  * ''``upcoming``''
          */
         public string live_broadcast_content { get; set; }
 
         /**
-         * The language of the text in the ''``video``'' resource's ''``snippet.title``'' and ''``snippet.description''``
+         * The language of the text in the ''``Video``'' resource's ''``snippet.title``'' and ''``snippet.description``''
          * properties.
          */
         public string default_language { get; set; }
@@ -100,6 +137,12 @@ namespace Utlib {
         /**
          * The ''``snippet.localized``'' object contains either a localized title and description for the video or the
          * title in the default language for the video's metadata.
+         *
+         *  * Localized text is returned in the resource snippet if the ''``videos.list``'' request used the ''``hl``'' parameter to specify a language for which localized text should be returned //and// localized text is available in that language.
+         *  * Metadata for the default language is returned if an ''``hl``'' parameter value is not specified //or// a value is specified but localized metadata is not available for the specified language.
+         *
+         * The property contains a read-only value. Use the ''``localizations``'' object to add, update, or delete
+         * localized titles.
          */
         public VideoLocalization localized { get; set; }
 
