@@ -18,12 +18,12 @@
 namespace Utlib {
 
     /**
-     * A ``Video`` resource represents a YouTube video.
+     * A {@link Utlib.Video} resource represents a YouTube video.
      */
     public class Video : Object {
 
         /**
-         * Identifies the API resource's type. The value will be ''``youtube#video``''.
+         * Identifies the API resource's type. The value will be ``youtube\#video``.
          */
         public string kind { get; set; }
 
@@ -38,8 +38,8 @@ namespace Utlib {
         public string id { get; set; }
 
         /**
-         * The ''``snippet``'' object contains basic details about the video, such as its title, description, and
-         * catogory.
+         * The {@link Utlib.VideoSnippet} object contains basic details about the video, such as its title, description,
+         * and catogory.
          */
         public VideoSnippet snippet { get; set; }
     }
@@ -58,7 +58,7 @@ namespace Utlib {
          *  * If a video is uploaded as a private video and the video metadata is retrieved by the channel owner, then the property value specifies the date and time that the video was uploaded.
          *  * If a video is uploaded as an unlisted video, the property value also specifies the date and time that the video was uploaded. In this case, anyone who knows the video's unique video ID can retrieve the video metadata.
          *
-         * The value is specified in [[https://www.w3.org/TR/NOTE-datetime|ISO 8601]] (''``YYYY-MM-DDYhh:mm:ss.sZ``'') format.
+         * The value is specified in [[https://www.w3.org/TR/NOTE-datetime|ISO 8601]] (``YYYY-MM-DDYhh:mm:ss.sZ``) format.
          */
         public DateTime published_at { get; set; }
 
@@ -71,8 +71,8 @@ namespace Utlib {
          * The video's title.
          *
          * The property value has a maximum length of 100 characters and may contain all valid UTF-8 characters except
-         * ``<`` and ``>``. You must set a value for this property if you call the ''``videos.update``'' method and are
-         * updating the ''``snippet``'' part of a ''``video``'' resource.
+         * ``<`` and ``>``. You must set a value for this property if you call the {@link Utlib.VideosResource.update}
+         * method and are updating the {@link Utlib.Video.snippet} part of a {@link Utlib.Video} resource.
          */
         public string title { get; set; }
 
@@ -111,8 +111,8 @@ namespace Utlib {
         /**
          * The YouTube video category associated with the video.
          *
-         * You must set a value for this property if you call the ''``videos.update``'' method and are updating the
-         * ''``snippet``'' part of a ''``video``'' resource.
+         * You must set a value for this property if you call the {@link Utlib.VideosResource.update} method and are
+         * updating the {@link Utlib.Video.snippet} part of a {@link Utlib.Video} resource.
          */
         public string category_id { get; set; }
 
@@ -122,32 +122,33 @@ namespace Utlib {
          *
          * Valid values for this property are:
          *
-         *  * ''``live``''
-         *  * ''``none``''
-         *  * ''``upcoming``''
+         *  * ``live``
+         *  * ``none``
+         *  * ``upcoming``
          */
         public string live_broadcast_content { get; set; }
 
         /**
-         * The language of the text in the ''``Video``'' resource's ''``snippet.title``'' and ''``snippet.description``''
-         * properties.
+         * The language of the text in the {@link Utlib.Video} resource's {@link Utlib.VideoSnippet.title} and
+         * {@link Utlib.VideoSnippet.description} properties.
          */
         public string default_language { get; set; }
 
         /**
-         * The ''``snippet.localized``'' object contains either a localized title and description for the video or the
-         * title in the default language for the video's metadata.
+         * The {@link Utlib.VideoLocalization} object contains either a localized title and description for the video or
+         * the title in the default language for the video's metadata.
          *
-         *  * Localized text is returned in the resource snippet if the ''``videos.list``'' request used the ''``hl``'' parameter to specify a language for which localized text should be returned //and// localized text is available in that language.
-         *  * Metadata for the default language is returned if an ''``hl``'' parameter value is not specified //or// a value is specified but localized metadata is not available for the specified language.
+         *  * Localized text is returned in the resource snippet if the {@link Utlib.VideosResource.list} request used the {@link Utlib.VideosResource.ListRequest.hl} parameter to specify a language for which localized text should be returned //and// localized text is available in that language.
+         *  * Metadata for the default language is returned if an {@link Utlib.VideosResource.ListRequest.hl} parameter value is not specified //or// a value is specified but localized metadata is not available for the specified language.
          *
-         * The property contains a read-only value. Use the ''``localizations``'' object to add, update, or delete
-         * localized titles.
+         * The property contains a read-only value. Use the {@link Utlib.Video.localizations} object to add, update, or
+         * delete localized titles.
          */
         public VideoLocalization localized { get; set; }
 
         /**
-         * The ''``default_audio_language``'' property specifies the language spoken in the video's default audio track.
+         * The {@link Utlib.VideoSnippet.default_audio_language} property specifies the language spoken in the video's
+         * default audio track.
          */
         public string default_audio_language { get; set; }
     }
