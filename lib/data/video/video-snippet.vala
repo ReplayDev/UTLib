@@ -33,12 +33,12 @@ namespace Utlib {
          *
          * The value is specified in [[https://www.w3.org/TR/NOTE-datetime|ISO 8601]] (``YYYY-MM-DDYhh:mm:ss.sZ``) format.
          */
-        public DateTime published_at { get; set; }
+        public DateTime published_at { get; }
 
         /**
          * The ID that YouTube uses to uniquely identify the channel that the video was uploaded to.
          */
-        public string? channel_id { get; set; }
+        public string? channel_id { get; }
 
         /**
          * The video's title.
@@ -47,7 +47,7 @@ namespace Utlib {
          * ``<`` and ``>``. You must set a value for this property if you call the {@link Utlib.VideosResource.update}
          * method and are updating the {@link Utlib.Video.snippet} part of a {@link Utlib.Video} resource.
          */
-        public string? title { get; set; }
+        public string? title { get; }
 
         /**
          * The video's description.
@@ -55,7 +55,7 @@ namespace Utlib {
          * The property value has a maximum length of 5000 bytes and may contain all valid UTF-8 characters except ``<``
          * and ``>``.
          */
-        public string? description { get; set; }
+        public string? description { get; }
 
         /**
          * A map of thumbnails images associated with the video.
@@ -63,12 +63,12 @@ namespace Utlib {
          * For each object in the map, the key is the name of the thumbnail image, and the value is an object that
          * contains other information about the thumbnail.
          */
-        public Gee.HashMap<string, Thumbnail> thumbnails { get; set; }
+        public Gee.HashMap<string, Thumbnail> thumbnails { get; }
 
         /**
          * Channel title for the channel that the video belongs to.
          */
-        public string? channel_title { get; set; }
+        public string? channel_title { get; }
 
         /**
          * A list of keyword tags associated with the video.
@@ -79,7 +79,7 @@ namespace Utlib {
          *  * The property value is a list, and commas between items in the list count toward the limit.
          *  * If a tag contains a space, the API server handles the tag value as though it were wrapped in quotation marks, and the quotation marks count toward the character limit. So, for the purposes of character limits, the tag ''Foo-Baz'' contains seven characters, but the tag ''Foo Baz'' contains nine characters.
          */
-        public Gee.ArrayList<string> tags { get; set; }
+        public Gee.ArrayList<string> tags { get; }
 
         /**
          * The YouTube video category associated with the video.
@@ -87,7 +87,7 @@ namespace Utlib {
          * You must set a value for this property if you call the {@link Utlib.VideosResource.update} method and are
          * updating the {@link Utlib.Video.snippet} part of a {@link Utlib.Video} resource.
          */
-        public string category_id { get; set; }
+        public string category_id { get; }
 
         /**
          * Indicates if the video is an upcoming/active live broadcast. Or it's "none" if the video is not an
@@ -99,13 +99,13 @@ namespace Utlib {
          *  * ``none``
          *  * ``upcoming``
          */
-        public string live_broadcast_content { get; set; }
+        public string live_broadcast_content { get; }
 
         /**
          * The language of the text in the {@link Utlib.Video} resource's {@link Utlib.VideoSnippet.title} and
          * {@link Utlib.VideoSnippet.description} properties.
          */
-        public string default_language { get; set; }
+        public string default_language { get; }
 
         /**
          * The {@link Utlib.VideoLocalization} object contains either a localized title and description for the video or
@@ -117,12 +117,12 @@ namespace Utlib {
          * The property contains a read-only value. Use the {@link Utlib.Video.localizations} object to add, update, or
          * delete localized titles.
          */
-        public VideoLocalization localized { get; set; }
+        public VideoLocalization localized { get; }
 
         /**
          * The {@link Utlib.VideoSnippet.default_audio_language} property specifies the language spoken in the video's
          * default audio track.
          */
-        public string default_audio_language { get; set; }
+        public string default_audio_language { get; }
     }
 }

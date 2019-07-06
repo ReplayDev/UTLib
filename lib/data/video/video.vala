@@ -25,28 +25,28 @@ namespace Utlib {
         /**
          * Identifies the API resource's type. The value will be ``youtube\#video``.
          */
-        public string? kind { get; set; }
+        public string? kind { get; }
 
         /**
          * The Etag of this resource.
          */
-        public string? etag { get; set; }
+        public string? etag { get; }
 
         /**
          * The ID that YouTube uses to uniquely identify the video.
          */
-        public string? id { get; set; }
+        public string? id { get; }
 
         /**
          * The {@link Utlib.VideoSnippet} object contains basic details about the video, such as its title, description,
          * and catogory.
          */
-        public VideoSnippet snippet { get; set; }
+        public VideoSnippet snippet { get; }
 
         /**
          * The {@link Utlib.ContentDetails} object contains information about the video content, including the length of
          * the video and an indication of whether captions are available for the video.
          */
-        public ContentDetails content_details { get; set; }
+        public ContentDetails content_details { get; }
     }
 }

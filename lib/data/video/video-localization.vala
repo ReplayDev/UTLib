@@ -22,11 +22,11 @@ namespace Utlib {
         /**
          * The localized video title.
          */
-        public string title { get; set; }
+        public string title { get; }
 
         /**
          * The localized video description.
          */
-        public string description { get; set; }
+        public string description { get; }
     }
 }

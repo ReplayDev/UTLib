@@ -22,16 +22,16 @@ namespace Utlib {
         /**
          * The image's URL.
          */
-        public string url { get; set; }
+        public string url { get; }
 
         /**
          * The image's width.
          */
-        public uint width { get; set; }
+        public uint width { get; }
 
         /**
          * The image's height.
          */
-        public uint height { get; set; }
+        public uint height { get; }
     }
 }
