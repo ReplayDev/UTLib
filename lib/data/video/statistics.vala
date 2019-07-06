@@ -22,21 +22,21 @@ namespace Utlib {
         /**
          * The number of times the video has been viewed.
          */
-        public ulong view_count { get; }
+        public ulong? view_count { get; }
 
         /**
          * The number of users who have indicated that they liked the video.
          */
-        public ulong like_count { get; }
+        public ulong? like_count { get; }
 
         /**
          * The number of users who have indicated that they disliked the video.
          */
-        public ulong dislike_count { get; }
+        public ulong? dislike_count { get; }
 
         /**
          * The number of comments for the video.
          */
-        public ulong comment_count { get; }
+        public ulong? comment_count { get; }
     }
 }
