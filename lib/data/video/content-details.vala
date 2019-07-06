@@ -66,5 +66,14 @@ namespace Utlib {
          * channel linked to a YouTube content partner and then claimed by that partner.
          */
         public bool? licensed_content { get; }
+
+        /**
+         * The {@link Utlib.RegionRestriction} object contains information about the countries where a video is (or is
+         * not) viewable.
+         *
+         * The object will contain either the {@link Utlib.RegionRestriction.allowed} property or the
+         * {@link Utlib.RegionRestriction.blocked} property.
+         */
+        public RegionRestriction region_restriction { get; }
     }
 }
