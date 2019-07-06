@@ -80,5 +80,22 @@ namespace Utlib {
          * Specifies the ratings that the video received under various rating schemes.
          */
         public ContentRating content_rating { get; }
+
+        /**
+         * Specifies the projection format of the video.
+         *
+         * Valid values for this property are:
+         *
+         *  * ``360``
+         *  * ``rectangular``
+         */
+        public string? projection { get; }
+
+        /**
+         * Indicates whether the video uploader has provided a custom thumbnail image for the video.
+         *
+         * This property is only visible to the video uploader.
+         */
+        public bool? has_custom_thumbnail { get; }
     }
 }
