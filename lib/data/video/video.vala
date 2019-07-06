@@ -65,5 +65,10 @@ namespace Utlib {
          * player.
          */
         public Player player { get; }
+
+        /**
+         * The {@link Utlib.TopicDetails} object encapsulates information about topics associated with the video.
+         */
+        public TopicDetails topic_details { get; }
     }
 }
