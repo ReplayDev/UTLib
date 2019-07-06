@@ -75,5 +75,10 @@ namespace Utlib {
          * {@link Utlib.RegionRestriction.blocked} property.
          */
         public RegionRestriction region_restriction { get; }
+
+        /**
+         * Specifies the ratings that the video received under various rating schemes.
+         */
+        public ContentRating content_rating { get; }
     }
 }
