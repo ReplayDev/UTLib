@@ -48,5 +48,11 @@ namespace Utlib {
          * the video and an indication of whether captions are available for the video.
          */
         public ContentDetails content_details { get; }
+
+        /**
+         * The {@link Utlib.Status} object contains information about the video's uploading, processing, and privacy
+         * statuses.
+         */
+        public Status status { get; }
     }
 }
