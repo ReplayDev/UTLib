@@ -59,5 +59,11 @@ namespace Utlib {
          * The {@link Utlib.Statistics} object contains statistics about the video.
          */
         public Statistics statistics { get; }
+
+        /**
+         * The {@link Utlib.Player} object contains information that you would use to play the video in an embedded
+         * player.
+         */
+        public Player player { get; }
     }
 }
