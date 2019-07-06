@@ -70,5 +70,11 @@ namespace Utlib {
          * The {@link Utlib.TopicDetails} object encapsulates information about topics associated with the video.
          */
         public TopicDetails topic_details { get; }
+
+        /**
+         * The {@link Utlib.RecordingDetails} object encapsulates information about the location, date and address where
+         * the video was recorded.
+         */
+        public RecordingDetails recording_details { get; }
     }
 }
