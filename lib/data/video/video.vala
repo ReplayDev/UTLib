@@ -54,5 +54,10 @@ namespace Utlib {
          * statuses.
          */
         public Status status { get; }
+
+        /**
+         * The {@link Utlib.Statistics} object contains statistics about the video.
+         */
+        public Statistics statistics { get; }
     }
 }
