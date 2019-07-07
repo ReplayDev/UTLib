@@ -17,11 +17,28 @@
 
 namespace Utlib {
 
-    public class AudioStream : Stream {
+    public class AudioStream : Object {
 
         /**
          * The number of audio channels that the stream contains.
          */
         public uint? channel_count { get; }
+
+        /**
+         * The audio codec that the stream uses.
+         */
+        public string? codec { get; }
+
+        /**
+         * The audio stream's bitrate, in bits per second.
+         */
+        public ulong? bitrate_bps { get; }
+
+        /**
+         * A value that uniquely identifies a video vendor.
+         *
+         * Tipically, the value is a four-letter vendor code.
+         */
+        public string? vendor { get; }
     }
 }

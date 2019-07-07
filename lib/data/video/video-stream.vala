@@ -17,7 +17,7 @@
 
 namespace Utlib {
 
-    public class VideoStream : Stream {
+    public class VideoStream : Object {
 
         /**
          * The encoded video content's width in pixels.
@@ -44,6 +44,16 @@ namespace Utlib {
         public double? aspect_ratio { get; }
 
         /**
+         * The video codec that the stream uses.
+         */
+        public string? codec { get; }
+
+        /**
+         * The video stream's bitrate, in bits per second.
+         */
+        public ulong? bitrate_bps { get; }
+
+        /**
          * The amount that YouTube needs to rotate the original source content to properly display the video.
          *
          * Valid values for this property are:
@@ -55,5 +65,12 @@ namespace Utlib {
          *  * ``upsideDown`` - The video needs to be rotated upside down.
          */
         public string? rotation { get; }
+
+        /**
+         * A value that uniquely identifies a video vendor.
+         *
+         * Tipically, the value is a four-letter vendor code.
+         */
+        public string? vendor { get; }
     }
 }
