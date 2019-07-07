@@ -11,10 +11,7 @@ services:
 
 before_install:
   - docker pull archlinux/base
-  - docker create --rm -v $PWD:/build --name utlib_build -i archlinux/base
-  - docker start utlib_build
-  - docker exec utlib_build /bin/sh -c "pacman --version"
-  - docker exec utlib_build /bin/sh -c "pacman -Syu --noconfirm vala meson libgee gobject-introspection"
 
 script:
-  - docker exec utlib_build /bin/sh -c "cd /build; TRAVIS=true CC=$CC meson build --prefix /usr; ninja -C build"
+  - docker build -t utlib .
+  - docker run utlib /bin/sh -c "cd /root; TRAVIS=true CC=$CC meson build; ninja -C build"
