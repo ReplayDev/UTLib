@@ -113,6 +113,14 @@ namespace Utlib {
          */
         public virtual Suggestions suggestions { get; }
 
-        // TODO: Implement liveStreamingDetails and localizations
+        /**
+         * The {@link Utlib.LiveStreamingDetails} object contains metadata about a live video broadcast.
+         *
+         * The object will only be present in a {@link Utlib.Video} resource if the video is an upcoming, live, or
+         * completed live broadcast.
+         */
+        public virtual LiveStreamingDetails live_streaming_details { get; }
+
+        // TODO: Implement localizations
     }
 }
