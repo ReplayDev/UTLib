@@ -11,7 +11,7 @@ services:
 
 before_install:
   - docker pull archlinux/base
+  - docker build -t utlib .
 
 script:
-  - docker build -t utlib .
   - docker run utlib /bin/sh -c "cd /root; TRAVIS=true CC=$CC meson build; ninja -C build"
