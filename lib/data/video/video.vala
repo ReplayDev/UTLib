@@ -25,57 +25,57 @@ namespace Utlib {
         /**
          * Identifies the API resource's type. The value will be ``youtube\#video``.
          */
-        public string? kind { get; }
+        public virtual string? kind { get; }
 
         /**
          * The Etag of this resource.
          */
-        public string? etag { get; }
+        public virtual string? etag { get; }
 
         /**
          * The ID that YouTube uses to uniquely identify the video.
          */
-        public string? id { get; }
+        public virtual string? id { get; }
 
         /**
          * The {@link Utlib.VideoSnippet} object contains basic details about the video, such as its title, description,
          * and catogory.
          */
-        public VideoSnippet snippet { get; }
+        public virtual VideoSnippet snippet { get; }
 
         /**
          * The {@link Utlib.ContentDetails} object contains information about the video content, including the length of
          * the video and an indication of whether captions are available for the video.
          */
-        public ContentDetails content_details { get; }
+        public virtual ContentDetails content_details { get; }
 
         /**
          * The {@link Utlib.Status} object contains information about the video's uploading, processing, and privacy
          * statuses.
          */
-        public Status status { get; }
+        public virtual Status status { get; }
 
         /**
          * The {@link Utlib.Statistics} object contains statistics about the video.
          */
-        public Statistics statistics { get; }
+        public virtual Statistics statistics { get; }
 
         /**
          * The {@link Utlib.Player} object contains information that you would use to play the video in an embedded
          * player.
          */
-        public Player player { get; }
+        public virtual Player player { get; }
 
         /**
          * The {@link Utlib.TopicDetails} object encapsulates information about topics associated with the video.
          */
-        public TopicDetails topic_details { get; }
+        public virtual TopicDetails topic_details { get; }
 
         /**
          * The {@link Utlib.RecordingDetails} object encapsulates information about the location, date and address where
          * the video was recorded.
          */
-        public RecordingDetails recording_details { get; }
+        public virtual RecordingDetails recording_details { get; }
 
         /**
          * The {@link Utlib.FileDetails} object encapsulates information about the video file that was uploaded to YouTube,
@@ -86,6 +86,8 @@ namespace Utlib {
          * The {@link Utlib.FileDetails} object will only be returned if the {@link Utlib.ProcessingDetails.file_availability}
          * property has a value of ``available``.
          */
-        public FileDetails file_details { get; }
+        public virtual FileDetails file_details { get; }
+
+        // TODO: Implement processingDetails, suggestions, liveStreamingDetails and localizations
     }
 }
