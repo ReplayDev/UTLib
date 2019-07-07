@@ -10,4 +10,4 @@ before_install:
   - docker run archlinux/base /bin/sh -c "pacman -Syu --noconfirm vala meson libgee"
 
 script:
- - docker run --rm -v $PWD:/build archlinux/base /bin/sh -c "cd /build; meson builddir; ninja -C build"
+ - docker run -v $PWD:/build archlinux/base /bin/sh -c "cd /build; meson builddir; ninja -C build"
