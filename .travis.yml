@@ -7,7 +7,7 @@ services:
 
 before_install:
   - docker pull archlinux/base
-  - docker run /bin/sh -c "pacman -Syu --noconfirm vala meson libgee"
+  - docker run archlinux/base /bin/sh -c "pacman -Syu --noconfirm vala meson libgee"
 
 script:
  - docker run --rm -v $PWD:/build archlinux/base /bin/sh -c "cd /build; meson builddir; ninja -C build"
