@@ -2,7 +2,6 @@ sudo: false
 
 os:
   - linux
-  - osx
 
 language:
   - c
@@ -11,15 +10,11 @@ services:
   - docker
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install ninja python3 libgee vala; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip3 install meson; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker pull archlinux/base; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker create --rm -v $PWD:/build --name utlib_build -i archlinux/base; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker start utlib_build; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker exec utlib_build /bin/sh -c "pacman --version"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker exec utlib_build /bin/sh -c "pacman -Syu --noconfirm vala meson libgee"; fi
+  - docker pull archlinux/base
+  - docker create --rm -v $PWD:/build --name utlib_build -i archlinux/base
+  - docker start utlib_build
+  - docker exec utlib_build /bin/sh -c "pacman --version"
+  - docker exec utlib_build /bin/sh -c "pacman -Syu --noconfirm vala meson libgee gobject-introspection"
 
 script:
- - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then SDKROOT=$(xcodebuild -version -sdk macosx Path) meson build --prefix /usr; ninja -C build; fi
- - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker exec utlib_build /bin/sh -c "cd /build; TRAVIS=true CC=$CC meson build --prefix /usr; ninja -C build"; fi
+  - docker exec utlib_build /bin/sh -c "cd /build; TRAVIS=true CC=$CC meson build --prefix /usr; ninja -C build"
