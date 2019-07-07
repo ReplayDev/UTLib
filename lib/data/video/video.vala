@@ -76,5 +76,16 @@ namespace Utlib {
          * the video was recorded.
          */
         public RecordingDetails recording_details { get; }
+
+        /**
+         * The {@link Utlib.FileDetails} object encapsulates information about the video file that was uploaded to YouTube,
+         * including the file's resolution, duration, audio and video codecs, stream bitrates, and more.
+         *
+         * This data can only be retrieved by the video owner.
+         *
+         * The {@link Utlib.FileDetails} object will only be returned if the {@link Utlib.ProcessingDetails.file_availability}
+         * property has a value of ``available``.
+         */
+        public FileDetails file_details { get; }
     }
 }

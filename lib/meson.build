@@ -1,14 +1,18 @@
 utlib_sources = files (
+    'data/video/audio-stream.vala',
     'data/video/content-details.vala',
     'data/video/content-rating.vala',
+    'data/video/file-details.vala',
     'data/video/player.vala',
     'data/video/recording-details.vala',
     'data/video/region-restriction.vala',
     'data/video/statistics.vala',
     'data/video/status.vala',
+    'data/video/stream.vala',
     'data/video/topic-details.vala',
     'data/video/video-localization.vala',
     'data/video/video-snippet.vala',
+    'data/video/video-stream.vala',
     'data/video/video.vala',
 
     'data/thumbnail.vala',
