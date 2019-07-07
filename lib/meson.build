@@ -10,6 +10,8 @@ utlib_sources = files (
     'data/video/region-restriction.vala',
     'data/video/statistics.vala',
     'data/video/status.vala',
+    'data/video/suggestions.vala',
+    'data/video/tag-suggestion.vala',
     'data/video/topic-details.vala',
     'data/video/video-localization.vala',
     'data/video/video-snippet.vala',

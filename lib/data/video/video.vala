@@ -102,6 +102,17 @@ namespace Utlib {
          */
         public virtual ProcessingDetails processing_details { get; }
 
-        // TODO: Implement suggestions, liveStreamingDetails and localizations
+        /**
+         * The {@link Utlib.Suggestions} object encapsulates suggestions that identify opportunities to improve the
+         * video quality or the metadata for the uploaded video.
+         *
+         * This data can only be retrieved by the video owner.
+         *
+         * The {@link Utlib.Suggestions} object will only be returned if the {@link Utlib.ProcessingDetails.tag_suggestions_availability}
+         * property or the {@link Utlib.ProcessingDetails.editor_suggestions_availability} property has a value of ``available``.
+         */
+        public virtual Suggestions suggestions { get; }
+
+        // TODO: Implement liveStreamingDetails and localizations
     }
 }
