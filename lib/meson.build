@@ -4,6 +4,8 @@ utlib_sources = files (
     'data/video/content-rating.vala',
     'data/video/file-details.vala',
     'data/video/player.vala',
+    'data/video/processing-details.vala',
+    'data/video/processing-progress.vala',
     'data/video/recording-details.vala',
     'data/video/region-restriction.vala',
     'data/video/statistics.vala',

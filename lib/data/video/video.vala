@@ -88,6 +88,20 @@ namespace Utlib {
          */
         public virtual FileDetails file_details { get; }
 
-        // TODO: Implement processingDetails, suggestions, liveStreamingDetails and localizations
+        /**
+         * The {@link Utlib.ProcessingDetails} object encapsulates information about YouTube's progress in processing
+         * the uploaded video file.
+         *
+         * The properties in the object identify the current processing status and an estimate of the time remaining
+         * until YouTube finishes processing the video. This part also indicates whether different types of data or
+         * content, such as file details or thumbnail images, are available for the video.
+         *
+         * The {@link Utlib.ProcessingDetails} object is designed to be polled so that the video uploaded can track the
+         * progress that YouTube has made in processing the uploaded video file. This data can only be retrieved by the
+         * video owner.
+         */
+        public virtual ProcessingDetails processing_details { get; }
+
+        // TODO: Implement suggestions, liveStreamingDetails and localizations
     }
 }
