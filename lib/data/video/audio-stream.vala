@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * Information about an audio stream.
+     */
     public class AudioStream : Object {
 
         /**

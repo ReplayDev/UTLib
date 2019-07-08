@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * Basic details about a video, including title, description, uploader, thumbnails and category.
+     */
     public class VideoSnippet : Object {
 
         /**
@@ -44,8 +47,8 @@ namespace Utlib {
          * The video's title.
          *
          * The property value has a maximum length of 100 characters and may contain all valid UTF-8 characters except
-         * ``<`` and ``>``. You must set a value for this property if you call the {@link Utlib.VideosResource.update}
-         * method and are updating the {@link Utlib.Video.snippet} part of a {@link Utlib.Video} resource.
+         * ``<`` and ``>``. You must set a value for this property if you call the {@link VideosResource.update}
+         * method and are updating the {@link Video.snippet} part of a {@link Video} resource.
          */
         public string? title { get; }
 
@@ -84,8 +87,8 @@ namespace Utlib {
         /**
          * The YouTube video category associated with the video.
          *
-         * You must set a value for this property if you call the {@link Utlib.VideosResource.update} method and are
-         * updating the {@link Utlib.Video.snippet} part of a {@link Utlib.Video} resource.
+         * You must set a value for this property if you call the {@link VideosResource.update} method and are updating
+         * the {@link Video.snippet} part of a {@link Video} resource.
          */
         public string category_id { get; }
 
@@ -102,26 +105,25 @@ namespace Utlib {
         public string live_broadcast_content { get; }
 
         /**
-         * The language of the text in the {@link Utlib.Video} resource's {@link Utlib.VideoSnippet.title} and
-         * {@link Utlib.VideoSnippet.description} properties.
+         * The language of the text in the {@link Video} resource's {@link VideoSnippet.title} and
+         * {@link VideoSnippet.description} properties.
          */
         public string default_language { get; }
 
         /**
-         * The {@link Utlib.VideoLocalization} object contains either a localized title and description for the video or
+         * The {@link VideoLocalization} object contains either a localized title and description for the video or
          * the title in the default language for the video's metadata.
          *
-         *  * Localized text is returned in the resource snippet if the {@link Utlib.VideosResource.list} request used the {@link Utlib.VideosResource.ListRequest.hl} parameter to specify a language for which localized text should be returned //and// localized text is available in that language.
-         *  * Metadata for the default language is returned if an {@link Utlib.VideosResource.ListRequest.hl} parameter value is not specified //or// a value is specified but localized metadata is not available for the specified language.
+         *  * Localized text is returned in the resource snippet if the {@link VideosResource.list} request used the {@link VideosResource.ListRequest.hl} parameter to specify a language for which localized text should be returned //and// localized text is available in that language.
+         *  * Metadata for the default language is returned if an {@link VideosResource.ListRequest.hl} parameter value is not specified //or// a value is specified but localized metadata is not available for the specified language.
          *
-         * The property contains a read-only value. Use the {@link Utlib.Video.localizations} object to add, update, or
+         * The property contains a read-only value. Use the {@link Video.localizations} object to add, update, or
          * delete localized titles.
          */
         public VideoLocalization localized { get; }
 
         /**
-         * The {@link Utlib.VideoSnippet.default_audio_language} property specifies the language spoken in the video's
-         * default audio track.
+         * The {@link default_audio_language} property specifies the language spoken in the video's default audio track.
          */
         public string default_audio_language { get; }
     }

@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * Localized versions of certain video properties (e.g. title).
+     */
     public class VideoLocalization : Object {
 
         /**

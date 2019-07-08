@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * Video processing progress and completion time estimate.
+     */
     public class ProcessingProgress : Object {
 
         /**
@@ -30,7 +33,7 @@ namespace Utlib {
          * The number of parts of the video that YouTube has already processed.
          *
          * You can estimate the percentage of the video that YouTube has already processed by calculating:
-         * ``100 * parts_processed / parts_total``
+         * 100 * {@link parts_processed} / {@link parts_total}.
          *
          * Note that since the estimated number of parts could increase without a corresponding increase in the number
          * of parts that have already been processed, it is possible that the calculated progress could periodically

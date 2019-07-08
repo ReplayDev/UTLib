@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * Basic details about a video category, such as its localized title.
+     */
     public class Status : Object {
 
         /**
@@ -35,8 +38,7 @@ namespace Utlib {
         /**
          * This value explains why a video failed to upload.
          *
-         * This property is only present if the {@link Utlib.Status.upload_status} property indicates that the upload
-         * failed.
+         * This property is only present if the {@link upload_status} property indicates that the upload failed.
          *
          * Valid values for this property are:
          *
@@ -52,8 +54,7 @@ namespace Utlib {
         /**
          * This value explains why YouTube rejected an uploaded video.
          *
-         * This property is only present if the {@link Utlib.Status.upload_status} property indicates that the upload
-         * was rejected.
+         * This property is only present if the {@link upload_status} property indicates that the upload was rejected.
          *
          * Valid values for this property are:
          *
@@ -87,8 +88,8 @@ namespace Utlib {
          * It can be set if the privacy status of the video is private. The value is specified in [[https://www.w3.org/TR/NOTE-datetime|ISO 8601]]
          * (``YYYY-MM-DDThh:mm:ss.sZ``) format. Note the following two additional points about this property's behavior:
          *
-         *  * If you set this property's value when calling the {@link Utlib.VideosResource.update} method, you must also set the {@link Utlib.Status.privacy_status} property value to ``private`` even if the video is already private.
-         *  * If your request schedules a video to be published at some time in the past, the video will be published right away. As such, the effect of setting the {@link Utlib.Status.publish_at} property to a past date and time is the same as changing the video's {@link Utlib.Status.privacy_status} from ``private`` to ``public``.
+         *  * If you set this property's value when calling the {@link VideosResource.update} method, you must also set the {@link privacy_status} property value to ``private`` even if the video is already private.
+         *  * If your request schedules a video to be published at some time in the past, the video will be published right away. As such, the effect of setting the {@link publish_at} property to a past date and time is the same as changing the video's {@link privacy_status} from ``private`` to ``public``.
          */
         public DateTime publish_at { get; }
 

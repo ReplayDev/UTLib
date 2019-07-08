@@ -17,29 +17,32 @@
 
 namespace Utlib {
 
+    /**
+     * Player to be used for a video playback.
+     */
     public class Player : Object {
 
         /**
          * An ``<iframe>`` tag that embeds a player that plays the video.
          *
-         *  * If the API request to retrieve the resource specifies a value for the {@link Utlib.VideosResource.ListRequest.max_height} and/or {@link Utlib.VideosResource.ListRequest.max_width} parameters, the size of the embedded player is scaled to satisfy the {@link Utlib.VideosResource.ListRequest.max_height} and/or {@link Utlib.VideosResource.ListRequest.max_width} requirements.
+         *  * If the API request to retrieve the resource specifies a value for the {@link VideosResource.ListRequest.max_height} and/or {@link VideosResource.ListRequest.max_width} parameters, the size of the embedded player is scaled to satisfy the {@link VideosResource.ListRequest.max_height} and/or {@link VideosResource.ListRequest.max_width} requirements.
          *  * If the video's aspect ratio is unknown, the embedded player defaults to a 4:3 format.
          */
         public string? embed_html { get; }
 
         /**
-         * The height of the embedded player returned in the {@link Utlib.Player.embed_html} property.
+         * The height of the embedded player returned in the {@link embed_html} property.
          *
-         * This property is only returned if the request specified a value for the {@link Utlib.VideosResource.ListRequest.max_height}
-         * and/or {@link Utlib.VideosResource.ListRequest.max_width} paramters and the video's aspect ratio is known.
+         * This property is only returned if the request specified a value for the {@link VideosResource.ListRequest.max_height}
+         * and/or {@link VideosResource.ListRequest.max_width} paramters and the video's aspect ratio is known.
          */
         public long? embed_height { get; }
 
         /**
-         * The width of the embedded player returned in the {@link Utlib.Player.embed_html} property.
+         * The width of the embedded player returned in the {@link embed_html} property.
          *
-         * This property is only returned if the request specified a value for the {@link Utlib.VideosResource.ListRequest.max_height}
-         * and/or {@link Utlib.VideosResource.ListRequest.max_width} paramters and the video's aspect ratio is known.
+         * This property is only returned if the request specified a value for the {@link VideosResource.ListRequest.max_height}
+         * and/or {@link VideosResource.ListRequest.max_width} paramters and the video's aspect ratio is known.
          */
         public long? embed_width { get; }
     }

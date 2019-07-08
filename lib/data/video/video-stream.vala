@@ -17,13 +17,15 @@
 
 namespace Utlib {
 
+    /**
+     * Information about a video stream.
+     */
     public class VideoStream : Object {
 
         /**
          * The encoded video content's width in pixels.
          *
-         * You can calculate the video's encoding aspect ratio as {@link Utlib.VideoStream.width_pixels} /
-         * {@link Utlib.VideoStream.height_pixels}.
+         * You can calculate the video's encoding aspect ratio as {@link width_pixels} / {@link height_pixels}.
          */
         public uint? width_pixels { get; }
 

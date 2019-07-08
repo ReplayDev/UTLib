@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * Describes processing status and progress and availability of some other {@link Video} resource parts.
+     */
     public class ProcessingDetails : Object {
 
         /**
@@ -26,16 +29,16 @@ namespace Utlib {
          *
          * Valid values for this property are:
          *
-         *  * ``failed`` - Video processing has failed. See {@link Utlib.ProcessingDetails.processing_failure_reason}.
-         *  * ``processing`` - Video is currently being processed. See {@link Utlib.ProcessingDetails.processing_progress}.
+         *  * ``failed`` - Video processing has failed. See {@link processing_failure_reason}.
+         *  * ``processing`` - Video is currently being processed. See {@link processing_progress}.
          *  * ``succeeded`` - Video has been successfully processed.
          *  * ``terminated`` - Processing information is no longer available.
          */
         public virtual string? processing_status { get; }
 
         /**
-         * The {@link Utlib.ProcessingProgress} object contains information about the progress YouTube has made in
-         * processing the video.
+         * The {@link ProcessingProgress} object contains information about the progress YouTube has made in processing
+         * the video.
          *
          * The values are really only relevant if the video's processing status is ``processing``.
          */
@@ -44,7 +47,7 @@ namespace Utlib {
         /**
          * The reason that YouTube failed to process the video.
          *
-         * This property will only have a value if the {@link Utlib.ProcessingDetails.processing_status} property's value
+         * This property will only have a value if the {@link processing_status} property's value
          * is ``failed``.
          *
          * Valid values for this property are:
@@ -59,8 +62,8 @@ namespace Utlib {
         /**
          * This value indicates whether file details are available for the uploaded video.
          *
-         * You can retrieve a video's file details by requesting the {@link Utlib.FileDetails} part in your {@link Utlib.VideosResource.list}
-         * request.
+         * You can retrieve a video's file details by requesting the {@link FileDetails} part in your
+         * {@link VideosResource.list} request.
          */
         public virtual string? file_details_availability { get; }
 
@@ -69,8 +72,8 @@ namespace Utlib {
          * ability to process the video, warnings that explain video processing problems, or errors that cause video
          * processing problems.
          *
-         * You can retrieve these suggestions by requesting the {@link Utlib.Suggestions} part in your {@link Utlib.VideosResource.list}
-         * request.
+         * You can retrieve these suggestions by requesting the {@link Suggestions} part in your
+         * {@link VideosResource.list} request.
          */
         public virtual string? processing_issues_availability { get; }
 
@@ -78,8 +81,7 @@ namespace Utlib {
          * This value indicates whether keyword (tag) suggestions are available for the video.
          *
          * Tags can be added to a video's metadata to make it easier for other users to find the video. You can retrieve
-         * these suggestions by requesting the {@link Utlib.Suggestions} part in your {@link Utlib.VideosResource.list}
-         * request.
+         * these suggestions by requesting the {@link Suggestions} part in your {@link VideosResource.list} request.
          */
         public virtual string? tag_suggestions_availability { get; }
 
@@ -87,8 +89,8 @@ namespace Utlib {
          * This value indicates whether video editing suggestions, which might improve video quality or the playback
          * experience, are available for the video.
          *
-         * You can retrieve these suggestions by requesting the {@link Utlib.Suggestions} part in your {@link Utlib.VideosResource.list}
-         * request.
+         * You can retrieve these suggestions by requesting the {@link Suggestions} part in your
+         * {@link VideosResource.list} request.
          */
         public virtual string? editor_suggestions_availability { get; }
 

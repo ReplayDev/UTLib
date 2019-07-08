@@ -17,6 +17,10 @@
 
 namespace Utlib {
 
+    /**
+     * Specifies suggestions on how to improve video content, including encoding hints, tag suggestions, and editor
+     * suggestions.
+     */
     public class Suggestions : Object {
 
         /**

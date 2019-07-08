@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * Details about the content of a YouTube video.
+     */
     public class ContentDetails : Object {
 
         /**
@@ -68,11 +71,11 @@ namespace Utlib {
         public bool? licensed_content { get; }
 
         /**
-         * The {@link Utlib.RegionRestriction} object contains information about the countries where a video is (or is
-         * not) viewable.
+         * The {@link RegionRestriction} object contains information about the countries where a video is (or is not)
+         * viewable.
          *
-         * The object will contain either the {@link Utlib.RegionRestriction.allowed} property or the
-         * {@link Utlib.RegionRestriction.blocked} property.
+         * The object will contain either the {@link RegionRestriction.allowed} property or the
+         * {@link RegionRestriction.blocked} property.
          */
         public RegionRestriction region_restriction { get; }
 

@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * A single tag suggestion with its relevance information.
+     */
     public class TagSuggestion : Object {
 
         /**

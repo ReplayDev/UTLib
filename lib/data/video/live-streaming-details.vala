@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * Details about the live streaming metadata.
+     */
     public class LiveStreamingDetails : Object {
 
         /**

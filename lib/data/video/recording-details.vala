@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * Recording information associated with the video.
+     */
     public class RecordingDetails : Object {
 
         /**

@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * A thumbnail is an image representing a YouTube resource.
+     */
     public class Thumbnail : Object {
 
         /**

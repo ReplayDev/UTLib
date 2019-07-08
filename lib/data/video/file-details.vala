@@ -17,6 +17,10 @@
 
 namespace Utlib {
 
+    /**
+     * Describes original video file properties, including technical details about audio and video streams, but also
+     * metadata information like content length, digitalization time, or geotagging information.
+     */
     public class FileDetails : Object {
 
         /**

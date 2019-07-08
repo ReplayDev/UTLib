@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * Region restriction of the video.
+     */
     public class RegionRestriction : Object {
 
         /**

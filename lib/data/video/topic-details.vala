@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * Freebase topic information related to the video.
+     */
     public class TopicDetails : Object {
 
         /**

@@ -17,6 +17,11 @@
 
 namespace Utlib {
 
+    /**
+     * Rating schemes.
+     *
+     * The country-specific ratings are mostly for movies and shows.
+     */
     public class ContentRating : Object {
 
         /**

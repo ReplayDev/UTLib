@@ -17,6 +17,9 @@
 
 namespace Utlib {
 
+    /**
+     * Statistics about the video, such as the number of times the video was viewed or liked.
+     */
     public class Statistics : Object {
 
         /**
