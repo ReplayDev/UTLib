@@ -14,4 +14,4 @@ before_install:
   - docker build -t utlib .
 
 script:
-  - docker run utlib /bin/sh -c "cd /root; TRAVIS=true CC=$CC meson build; ninja -C build"
+  - docker run utlib /bin/sh -c "cd /root; TRAVIS=true CC=$CC meson build -Dwithdocs=false; ninja -C build"
