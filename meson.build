@@ -2,7 +2,8 @@ project (
     'utlib',
     [ 'c', 'vala' ],
     version: '0.1.0',
-    license: 'LGPL-3.0-or-later'
+    license: 'LGPL-3.0-or-later',
+    meson_version: '>=0.46.0'
 )
 
 glib_dep = dependency ('glib-2.0')
