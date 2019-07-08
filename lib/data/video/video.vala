@@ -121,6 +121,9 @@ namespace Utlib {
          */
         public virtual LiveStreamingDetails live_streaming_details { get; }
 
-        // TODO: Implement localizations
+        /**
+         * The {@link Utlib.Video.localizations} object contains translations of the video's metadata.
+         */
+        public virtual Gee.HashMap<string, VideoLocalization> localizations { get; }
     }
 }
