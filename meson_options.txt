@@ -1,0 +1,5 @@
+option (
+    'with-docs',
+    type: 'boolean',
+    yield: true
+)

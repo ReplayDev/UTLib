@@ -11,4 +11,7 @@ gobject_dep = dependency ('gobject-2.0')
 gee_dep = dependency ('gee-0.8')
 
 subdir ('lib')
-subdir ('doc')
+
+if get_option ('with-docs')
+    subdir ('doc')
+endif
