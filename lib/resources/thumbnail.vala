@@ -23,6 +23,11 @@ namespace Utlib {
     public class Thumbnail : Object {
 
         /**
+         * Initializes a new instance of the {@link Utlib.Thumbnail} class.
+         */
+        public Thumbnail () { }
+
+        /**
          * The image's URL.
          */
         public string url { get; }
