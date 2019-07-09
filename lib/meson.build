@@ -21,6 +21,9 @@ utlib_sources = files (
 
     'resources/thumbnail.vala',
 
+    'responses/list-response.vala',
+    'responses/page-info.vala',
+
     'youtube-service.vala',
 )
 
