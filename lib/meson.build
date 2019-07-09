@@ -20,6 +20,8 @@ utlib_sources = files (
     'data/video/video.vala',
 
     'data/thumbnail.vala',
+
+    'youtube-service.vala',
 )
 
 dependencies = [
