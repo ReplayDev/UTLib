@@ -1,4 +1,4 @@
-/* utlib - Yet another wrapper to the YouTube Data API v3
+/* Utlib - Yet another wrapper to the YouTube Data API v3
  * Copyright (C) 2019 Nahuel Gomez Castro
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,14 +17,21 @@
 
 namespace Utlib {
 
-    /**
-     * Freebase topic information related to the video.
-     */
-    public class TopicDetails : Object {
+    public class VideoCategorySnippet : Object {
 
         /**
-         * A list of Wikipedia URLs that provide a high-level description of the video's content.
+         * The YouTube channel that created the video category.
          */
-        public Gee.ArrayList<string> topic_categories { get; }
+        public virtual string channel_id { get; set; }
+
+        /**
+         * The video category's title.
+         */
+        public virtual string title { get; set; }
+
+        /**
+         * Indicates whether videos can be associated with the category.
+         */
+        public virtual bool assignable { get; set; }
     }
 }

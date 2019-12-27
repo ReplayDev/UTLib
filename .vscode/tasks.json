@@ -7,9 +7,6 @@
             "label": "build",
             "type": "meson",
             "mode": "build",
-            "problemMatcher": [
-                "$valac"
-            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -19,9 +16,6 @@
             "label": "test",
             "type": "meson",
             "mode": "test",
-            "problemMatcher": [
-                "$valac"
-            ],
             "group": {
                 "kind": "test",
                 "isDefault": true

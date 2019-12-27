@@ -1,4 +1,4 @@
-/* utlib - Yet another wrapper to the YouTube Data API v3
+/* Utlib - Yet another wrapper to the YouTube Data API v3
  * Copyright (C) 2019 Nahuel Gomez Castro
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,28 +18,31 @@
 namespace Utlib {
 
     /**
-     * Statistics about the video, such as the number of times the video was viewed or liked.
+     * A {@link Utlib.VideoCategory} resource identifies a category that has
+     * been or could be associated with uploaded videos.
      */
-    public class Statistics : Object {
+    public class VideoCategory : Object {
 
         /**
-         * The number of times the video has been viewed.
+         * Identifies the API resource's type. The value will be
+         * ``youtube\#videoCategory``.
          */
-        public ulong? view_count { get; }
+        public virtual string kind { get; set; }
 
         /**
-         * The number of users who have indicated that they liked the video.
+         * The Etag of this resource.
          */
-        public ulong? like_count { get; }
+        public virtual string etag { get; set; }
 
         /**
-         * The number of users who have indicated that they disliked the video.
+         * The ID that YouTube uses to uniquely identify the video category.
          */
-        public ulong? dislike_count { get; }
+        public virtual string id { get; set; }
 
         /**
-         * The number of comments for the video.
+         * The {@link Utlib.VideoCategorySnippet} object contains basic details
+         * about the video category, including its title.
          */
-        public ulong? comment_count { get; }
+        public virtual VideoCategorySnippet snippet { get; set; }
     }
 }

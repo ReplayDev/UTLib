@@ -1,37 +1,7 @@
 utlib_sources = files (
-    'resources/video/audio-stream.vala',
-    'resources/video/content-details.vala',
-    'resources/video/content-rating.vala',
-    'resources/video/file-details.vala',
-    'resources/video/live-streaming-details.vala',
-    'resources/video/player.vala',
-    'resources/video/processing-details.vala',
-    'resources/video/processing-progress.vala',
-    'resources/video/recording-details.vala',
-    'resources/video/region-restriction.vala',
-    'resources/video/statistics.vala',
-    'resources/video/status.vala',
-    'resources/video/suggestions.vala',
-    'resources/video/tag-suggestion.vala',
-    'resources/video/topic-details.vala',
-    'resources/video/video-localization.vala',
-    'resources/video/video-snippet.vala',
-    'resources/video/video-stream.vala',
-    'resources/video/video.vala',
-
-    'resources/thumbnail.vala',
-
-    'responses/list-response.vala',
-    'responses/page-info.vala',
-
-    'youtube-service.vala',
+    'resources/video-category/video-category-snippet.vala',
+    'resources/video-category/video-category.vala'
 )
-
-dependencies = [
-    glib_dep,
-    gobject_dep,
-    gee_dep
-]
 
 utlib_version = meson.project_version ()
 version_array = utlib_version.split ('.')
@@ -47,6 +17,12 @@ utlib_header = '@0@.h'.format (meson.project_name ())
 utlib_vapi = '@0@.vapi'.format (utlib_api_name)
 utlib_gir = '@0@.gir'.format (utlib_gi_name)
 utlib_typelib = '@0@.typelib'.format (utlib_gi_name)
+
+dependencies = [
+    glib_dep,
+    gobject_dep,
+    gee_dep
+]
 
 utlib = library (
     meson.project_name (),
@@ -90,5 +66,5 @@ pkgconfig.generate (
     name: utlib_api_name,
     requires: dependencies,
     description: 'Yet another wrapper to the YouTube Data API v3',
-    url: 'https://github.com/UniTube/utlib'
+    url: 'https://gitlab.com/nahuelwexd/utlib'
 )

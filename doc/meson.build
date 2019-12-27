@@ -36,7 +36,7 @@ cdoc_target = custom_target (
         '--force',
         '--use-svg-images',
         '-o', join_paths (meson.current_build_dir (), valadoc_c_dir),
-        '--doclet-arg=' + 'lib/utlib.h',
+        '--doclet-arg=' + 'src/utlib.h',
         '--doclet=gtkdoc'
     ],
     build_by_default: true,
