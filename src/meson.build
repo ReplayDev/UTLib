@@ -16,7 +16,7 @@ utlib_micro_version = version_array[2].to_int ()
 
 utlib_api_version = '@0@.0'.format (utlib_major_version)
 utlib_api_name = '@0@-@1@'.format (meson.project_name (), utlib_api_version)
-utlib_gi_name = 'UTLib-@0@'.format (utlib_api_version)
+utlib_gi_name = 'Utlib-@0@'.format (utlib_api_version)
 
 utlib_header = '@0@.h'.format (meson.project_name ())
 utlib_vapi = '@0@.vapi'.format (utlib_api_name)
