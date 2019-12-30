@@ -9,7 +9,7 @@ stages:
 build:
   stage: build
   script:
-    - meson setup --buildtype release --prefix /usr build .
+    - meson setup --buildtype release --prefix /usr -Dwith-docs=false build .
     - ninja -C build
   artifacts:
     paths:
