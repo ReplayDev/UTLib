@@ -19,6 +19,16 @@ namespace Utlib {
 
     public abstract class Request<T> : Object {
 
+        protected PropertyService property_service;
+
+        protected Request () {
+            this.property_service = new PropertyService (this);
+        }
+
+        construct {
+            this.install_properties ();
+        }
+
         /**
          * OAuth 2.0 token for the current user.
          */
@@ -55,5 +65,15 @@ namespace Utlib {
         public string user_ip { get; set; }
 
         public abstract async T execute_async ();
+
+        protected virtual void install_properties () {
+            this.property_service.install_property ("access-token", "access_token");
+            this.property_service.install_property ("callback");
+            this.property_service.install_property ("fields");
+            this.property_service.install_property ("key");
+            this.property_service.install_property ("pretty-print", "prettyPrint");
+            this.property_service.install_property ("quota-user", "quotaUser");
+            this.property_service.install_property ("user-ip", "userIp");
+        }
     }
 }

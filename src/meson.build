@@ -6,6 +6,9 @@ utlib_sources = files (
 
     'responses/list-response.vala',
     'responses/page-info.vala',
+
+    'services/property-service.vala',
+    'services/property.vala',
 )
 
 utlib_version = meson.project_version ()
