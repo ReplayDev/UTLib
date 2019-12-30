@@ -27,22 +27,22 @@ namespace Utlib {
          * Identifies the API resource's type. The value will be
          * ``youtube\#videoCategory``.
          */
-        public virtual string kind { get; set; }
+        public string kind { get; set; }
 
         /**
          * The Etag of this resource.
          */
-        public virtual string etag { get; set; }
+        public string etag { get; set; }
 
         /**
          * The ID that YouTube uses to uniquely identify the video category.
          */
-        public virtual string id { get; set; }
+        public string id { get; set; }
 
         /**
          * The {@link Utlib.VideoCategorySnippet} object contains basic details
          * about the video category, including its title.
          */
-        public virtual VideoCategorySnippet snippet { get; set; }
+        public VideoCategorySnippet snippet { get; set; }
     }
 }

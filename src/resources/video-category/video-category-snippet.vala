@@ -22,16 +22,16 @@ namespace Utlib {
         /**
          * The YouTube channel that created the video category.
          */
-        public virtual string channel_id { get; set; }
+        public string channel_id { get; set; }
 
         /**
          * The video category's title.
          */
-        public virtual string title { get; set; }
+        public string title { get; set; }
 
         /**
          * Indicates whether videos can be associated with the category.
          */
-        public virtual bool assignable { get; set; }
+        public bool assignable { get; set; }
     }
 }
