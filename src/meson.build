@@ -1,6 +1,9 @@
 utlib_sources = files (
     'resources/video-category/video-category-snippet.vala',
-    'resources/video-category/video-category.vala'
+    'resources/video-category/video-category.vala',
+
+    'responses/list-response.vala',
+    'responses/page-info.vala',
 )
 
 utlib_version = meson.project_version ()
