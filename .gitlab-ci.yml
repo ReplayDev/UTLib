@@ -1,0 +1,16 @@
+image: archlinux/base
+
+before_script:
+  - pacman -Syu --noconfirm vala meson libgee
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - meson setup --buildtype release --prefix /usr build .
+    - ninja -C build
+  artifacts:
+    paths:
+      - build/
