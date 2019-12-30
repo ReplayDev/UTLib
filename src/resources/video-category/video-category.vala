@@ -25,7 +25,7 @@ namespace Utlib {
 
         /**
          * Identifies the API resource's type. The value will be
-         * ``youtube\#videoCategory``.
+         * ``youtube#videoCategory``.
          */
         public string kind { get; set; }
 
