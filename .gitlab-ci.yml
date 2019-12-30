@@ -1,7 +1,7 @@
 image: archlinux/base
 
 before_script:
-  - pacman -Syu --noconfirm vala meson libgee
+  - pacman -Syu --noconfirm vala meson libgee gobject-introspection
 
 stages:
   - build
