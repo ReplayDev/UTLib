@@ -1,4 +1,6 @@
 utlib_sources = files (
+    'requests/request.vala',
+
     'resources/video-category/video-category-snippet.vala',
     'resources/video-category/video-category.vala',
 
@@ -24,7 +26,8 @@ utlib_typelib = '@0@.typelib'.format (utlib_gi_name)
 dependencies = [
     glib_dep,
     gobject_dep,
-    gee_dep
+    gee_dep,
+    gio_dep
 ]
 
 utlib = library (
