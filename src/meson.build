@@ -26,6 +26,7 @@ utlib_vapi = '@0@.vapi'.format (utlib_api_name)
 utlib_gir = '@0@.gir'.format (utlib_gi_name)
 utlib_typelib = '@0@.typelib'.format (utlib_gi_name)
 utlib_pc = '@0@.pc'.format (utlib_api_name)
+utlib_deps = '@0@.deps'.format (utlib_api_name)
 
 dependencies = [
     glib_dep,
@@ -94,4 +95,16 @@ configure_file (
     configuration: pkgconfig_conf,
     install: true,
     install_dir: get_option ('libdir') / 'pkgconfig'
+)
+
+
+deps_conf = configuration_data ()
+deps_conf.set ('deps', '\n'.join (requires))
+
+configure_file (
+    input: 'deps.meson',
+    output: utlib_deps,
+    configuration: deps_conf,
+    install: true,
+    install_dir: get_option ('datadir') / 'vala' / 'vapi'
 )
