@@ -25,6 +25,7 @@ utlib_header = '@0@.h'.format (meson.project_name ())
 utlib_vapi = '@0@.vapi'.format (utlib_api_name)
 utlib_gir = '@0@.gir'.format (utlib_gi_name)
 utlib_typelib = '@0@.typelib'.format (utlib_gi_name)
+utlib_pc = '@0@.pc'.format (utlib_api_name)
 
 dependencies = [
     glib_dep,
@@ -69,11 +70,28 @@ utlib_dep = declare_dependency (
     ]
 )
 
-pkgconfig = import ('pkgconfig')
-pkgconfig.generate (
-    utlib,
-    name: utlib_api_name,
-    requires: dependencies,
-    description: 'Yet another wrapper to the YouTube Data API v3',
-    url: 'https://gitlab.com/nahuelwexd/utlib'
+
+requires = []
+
+foreach dependency : dependencies
+    name = dependency.name ()
+    requires += name
+endforeach
+
+pkgconfig_conf = configuration_data ()
+pkgconfig_conf.set ('prefix', get_option ('prefix'))
+pkgconfig_conf.set ('libdir', get_option ('libdir'))
+pkgconfig_conf.set ('api_name', utlib_api_name)
+pkgconfig_conf.set ('description', 'Yet another wrapper to the YouTube Data API v3')
+pkgconfig_conf.set ('url', 'https://gitlab.com/nahuelwexd/utlib')
+pkgconfig_conf.set ('version', utlib_version)
+pkgconfig_conf.set ('requires', ', '.join (requires))
+pkgconfig_conf.set ('lib_name', meson.project_name ())
+
+configure_file (
+    input: 'pc.meson',
+    output: utlib_pc,
+    configuration: pkgconfig_conf,
+    install: true,
+    install_dir: get_option ('libdir') / 'pkgconfig'
 )
