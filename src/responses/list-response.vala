@@ -46,5 +46,10 @@ namespace Utlib {
          * the result set.
          */
         public PageInfo page_info { get; set; }
+
+        /**
+         * A list of items that match the request.
+         */
+        public Gee.List<T> items { get; set; }
     }
 }
