@@ -5,6 +5,7 @@ before_script:
 
 stages:
   - build
+  - test
 
 variables:
   GIT_SUBMODULE_STRATEGY: normal
