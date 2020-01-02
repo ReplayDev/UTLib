@@ -64,7 +64,7 @@ namespace Utlib {
          */
         public string user_ip { get; set; }
 
-        public abstract async T execute_async ();
+        public abstract async T execute_async (Cancellable? cancellable);
 
         protected virtual void install_properties () {
             this.property_service.install_property ("access-token", "access_token");

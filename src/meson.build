@@ -1,5 +1,6 @@
 utlib_sources = files (
     'requests/request.vala',
+    'requests/video-categories-list-request.vala',
 
     'resources/video-category/video-category-snippet.vala',
     'resources/video-category/video-category.vala',
@@ -9,6 +10,8 @@ utlib_sources = files (
 
     'services/property-service.vala',
     'services/property.vala',
+
+    'utils.vala',
 )
 
 utlib_version = meson.project_version ()
@@ -32,7 +35,9 @@ dependencies = [
     glib_dep,
     gobject_dep,
     gee_dep,
-    gio_dep
+    gio_dep,
+    soup_dep,
+    gjson_dep
 ]
 
 utlib = library (
@@ -76,6 +81,11 @@ requires = []
 
 foreach dependency : dependencies
     name = dependency.name ()
+
+    if name == 'null'
+        name = 'gjson-1.0'
+    endif
+
     requires += name
 endforeach
 
