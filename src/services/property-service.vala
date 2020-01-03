@@ -63,10 +63,14 @@ namespace Utlib {
                 var property_parsed = property.parse_property (this.object);
 
                 if (property_parsed == null) {
-                    return null;
+                    break;
                 }
 
                 parsed.add (property_parsed);
+            }
+
+            if (parsed.size <= 0) {
+                return null;
             }
 
             return string.joinv ("&", parsed.to_array ());
