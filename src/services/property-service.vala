@@ -38,7 +38,10 @@ namespace Utlib {
                                       string? property_name_in_request = null)
         {
             var pspec = this.klass.find_property (property_name);
-            return_val_if_fail (pspec != null, false);
+
+            if (pspec == null) {
+                return false;
+            }
 
             var prop_name_in_request = property_name_in_request ?? property_name;
 
