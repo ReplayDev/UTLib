@@ -13,7 +13,7 @@ variables:
 build:
   stage: build
   script:
-    - meson setup --buildtype release --prefix /usr -Dwith-docs=false build .
+    - meson build --buildtype release --prefix /usr -Dwith-docs=false
     - ninja -C build
   artifacts:
     paths:
