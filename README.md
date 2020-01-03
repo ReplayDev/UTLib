@@ -2,7 +2,7 @@ Utlib
 =====
 
 [![pipeline status](https://gitlab.com/nahuelwexd/utlib/badges/master/pipeline.svg)](https://gitlab.com/nahuelwexd/utlib/commits/master)
-[![license](https://img.shields.io/badge/license-GPL--3.0-blue)](COPYING.LESSER)
+[![license](https://img.shields.io/badge/license-GPL--3.0-orange)](COPYING)
 
 Yet another library to wrap the YouTube Data API v3, but this time on Vala.
 
