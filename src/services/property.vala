@@ -15,6 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+using Soup;
+
 namespace Utlib {
 
     class Property : Object {
@@ -35,6 +37,8 @@ namespace Utlib {
                     if (value == null) {
                         return null;
                     }
+
+                    value = URI.encode (value, null);
 
                     return @"$property_name_in_request=$value";
                 default:
