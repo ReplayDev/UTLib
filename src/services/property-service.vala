@@ -55,6 +55,10 @@ namespace Utlib {
         public string? parse_properties () {
             var parsed = new ArrayList<string> ();
 
+            if (this.properties.size <= 0) {
+                return null;
+            }
+
             foreach (var property in this.properties) {
                 var property_parsed = property.parse_property (this.object);
 
