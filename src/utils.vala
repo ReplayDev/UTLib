@@ -17,7 +17,7 @@
 
 namespace Utlib {
 
-    public async string read_to_string_async (DataInputStream stream) throws IOError {
+    async string read_to_string_async (DataInputStream stream) throws IOError {
         string text = "";
 
         while (true) {
