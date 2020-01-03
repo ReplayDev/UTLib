@@ -28,8 +28,14 @@ namespace Utlib {
         public string? parse_property (Object object) {
             switch (this.property_type) {
                 case Type.STRING:
-                    string value;
+                    string? value;
+
                     object.get (this.property_name, out value);
+
+                    if (value == null) {
+                        return null;
+                    }
+
                     return @"$property_name_in_request=$value";
                 default:
                     return null;

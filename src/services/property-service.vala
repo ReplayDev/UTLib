@@ -57,7 +57,11 @@ namespace Utlib {
 
             foreach (var property in this.properties) {
                 var property_parsed = property.parse_property (this.object);
-                return_val_if_fail (property_parsed != null, null);
+
+                if (property_parsed == null) {
+                    return null;
+                }
+
                 parsed.add (property_parsed);
             }
 
