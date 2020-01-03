@@ -13,6 +13,7 @@ soup_dep = dependency ('libsoup-2.4')
 gjson_dep = dependency ('gjson-1.0', fallback: ['vul', 'gjson_dep'])
 
 subdir ('src')
+subdir ('tests')
 
 if get_option ('with-docs')
     subdir ('doc')
