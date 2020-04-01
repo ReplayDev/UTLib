@@ -1,6 +1,6 @@
 prefix=@prefix@
 libdir=${prefix}/@libdir@
-includedir=${prefix}/include
+includedir=${prefix}/@includedir@
 
 Name: @api_name@
 Description: @description@

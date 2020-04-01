@@ -1,15 +1,15 @@
-files_property_service = files (
-    'test-property-service.vala',
+video_test_sources = files (
+    'video-list-tests.vala',
 )
 
-exe_property_service = executable (
-    'test-property-service',
-    files_property_service,
+video_test = executable (
+    'video-test',
+    video_test_sources,
     dependencies: utlib_dep,
     link_with: utlib
 )
 
 test (
-    'test-property-service',
-    exe_property_service
+    'video-test',
+    video_test
 )

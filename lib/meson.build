@@ -1,18 +1,22 @@
-utlib_sources = files (
-    'requests/request.vala',
-    'requests/video-categories-list-request.vala',
+sources = files (
+    'data/thumbnail.vala',
+    'data/video.vala',
+    'data/video-localization.vala',
+    'data/video-snippet.vala',
 
-    'resources/video-category/video-category-snippet.vala',
-    'resources/video-category/video-category.vala',
+    'requests/parameter.vala',
+    'requests/request.vala',
+    'requests/video-list-request.vala',
+
+    'resources/videos-resource.vala',
 
     'responses/list-response.vala',
     'responses/page-info.vala',
+    'responses/video-list-response.vala',
 
-    'services/property-service.vala',
-    'services/property.vala',
-
-    'utils.vala',
+    'client.vala'
 )
+
 
 utlib_version = meson.project_version ()
 version_array = utlib_version.split ('.')
@@ -31,6 +35,7 @@ utlib_typelib = '@0@.typelib'.format (utlib_gi_name)
 utlib_pc = '@0@.pc'.format (utlib_api_name)
 utlib_deps = '@0@.deps'.format (utlib_api_name)
 
+
 dependencies = [
     glib_dep,
     gobject_dep,
@@ -40,18 +45,22 @@ dependencies = [
     gjson_dep
 ]
 
+
 utlib = library (
     meson.project_name (),
-    utlib_sources,
-    vala_header: utlib_header,
-    vala_vapi: utlib_vapi,
-    vala_gir: utlib_gir,
+    sources,
+
+     vala_header: utlib_header,
+       vala_vapi: utlib_vapi,
+        vala_gir: utlib_gir,
     dependencies: dependencies,
-    install: true,
-    install_dir: [true, true, true, true]
+         install: true,
+     install_dir: [true, true, true, true]
 )
 
+
 g_ir_compiler = find_program ('g-ir-compiler')
+
 custom_target (
     utlib_typelib,
     command: [
@@ -60,20 +69,20 @@ custom_target (
         utlib.full_path (),
         '--output',
         '@OUTPUT@',
-        join_paths (meson.current_build_dir (), utlib_gir)
+        meson.current_build_dir () / utlib_gir
     ],
-    output: utlib_typelib,
-    depends: utlib,
-    install: true,
-    install_dir: join_paths (get_option ('libdir'), 'girepository-1.0')
+
+         output: utlib_typelib,
+        depends: utlib,
+        install: true,
+    install_dir: get_option ('libdir') / 'girepository-1.0'
 )
 
+
 utlib_dep = declare_dependency (
-    link_with: utlib,
-    dependencies: dependencies,
-    include_directories: [
-        include_directories ('.')
-    ]
+              link_with: utlib,
+           dependencies: dependencies,
+    include_directories: [include_directories ('.')]
 )
 
 
@@ -92,19 +101,20 @@ endforeach
 pkgconfig_conf = configuration_data ()
 pkgconfig_conf.set ('prefix', get_option ('prefix'))
 pkgconfig_conf.set ('libdir', get_option ('libdir'))
+pkgconfig_conf.set ('includedir', get_option ('includedir'))
 pkgconfig_conf.set ('api_name', utlib_api_name)
 pkgconfig_conf.set ('description', 'Yet another wrapper to the YouTube Data API v3')
-pkgconfig_conf.set ('url', 'https://gitlab.com/nahuelwexd/utlib')
+pkgconfig_conf.set ('url', 'https://github.com/nahuelwexd/UTLib')
 pkgconfig_conf.set ('version', utlib_version)
 pkgconfig_conf.set ('requires', ', '.join (requires))
 pkgconfig_conf.set ('lib_name', meson.project_name ())
 
 configure_file (
-    input: 'pc.meson',
-    output: utlib_pc,
+            input: 'pc.meson',
+           output: utlib_pc,
     configuration: pkgconfig_conf,
-    install: true,
-    install_dir: get_option ('libdir') / 'pkgconfig'
+          install: true,
+      install_dir: get_option ('libdir') / 'pkgconfig'
 )
 
 
@@ -112,9 +122,9 @@ deps_conf = configuration_data ()
 deps_conf.set ('deps', '\n'.join (requires))
 
 configure_file (
-    input: 'deps.meson',
-    output: utlib_deps,
+            input: 'deps.meson',
+           output: utlib_deps,
     configuration: deps_conf,
-    install: true,
-    install_dir: get_option ('datadir') / 'vala' / 'vapi'
+          install: true,
+      install_dir: get_option ('datadir') / 'vala' / 'vapi'
 )
