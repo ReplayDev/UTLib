@@ -64,8 +64,7 @@ namespace Utlib {
                 try {
                     var parsed_object = GJson.Object.parse (
                         (string) message.response_body.data);
-                    var response = deserialize_object (typeof (VideoListResponse),
-                        parsed_object) as VideoListResponse;
+                    var response = (T) deserialize_object (typeof (T), parsed_object);
 
                     return response;
                 } catch (Error e) {
