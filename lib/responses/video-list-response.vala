@@ -15,9 +15,22 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+using Gee;
+
 namespace Utlib {
 
     public class VideoListResponse : ListResponse<Video> {
 
+        private Gee.List<Video> _items;
+
+        public override Gee.List<Video> items {
+            get {
+                return this._items;
+            }
+        }
+
+        construct {
+            this._items = new ArrayList<Video> ();
+        }
     }
 }
