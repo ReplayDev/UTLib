@@ -17,7 +17,7 @@
 
 namespace Utlib {
 
-    public class VideoListRequest : Request<ListResponse<Video>> {
+    public class VideoListRequest : Request<VideoListResponse> {
 
         public string part { get; private set; }
         public string chart { get; set; }

@@ -29,6 +29,10 @@ namespace Utlib {
         public string prev_page_token { get; set; }
         [Description (nick = "json::pageInfo")]
         public PageInfo page_info { get; set; }
-        public Gee.List<T> items { get; }
+        public Gee.List<T> items { get; private set; }
+
+        construct {
+            this.items = new ArrayList<T> ();
+        }
     }
 }

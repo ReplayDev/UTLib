@@ -29,7 +29,7 @@ void main (string[] args) {
             var video_list_response = video_list_request.execute ();
 
             assert_nonnull (video_list_response);
-            assert (video_list_response.kind == "youtube#videoListResponse");
+            assert_nonnull (video_list_response.items);
         }
     );
 
