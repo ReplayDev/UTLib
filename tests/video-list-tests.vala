@@ -30,6 +30,8 @@ void main (string[] args) {
 
             assert_nonnull (video_list_response);
             assert_nonnull (video_list_response.items);
+            debug (@"$(video_list_response.items.size)");
+            assert (video_list_response.items.size == 5);
         }
     );
 
