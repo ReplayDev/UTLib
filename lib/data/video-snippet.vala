@@ -27,10 +27,10 @@ namespace Utlib {
         public string channel_id { get; set; }
         public string title { get; set; }
         public string description { get; set; }
-        public Map<string, Thumbnail> thumbnails { get; }
+        public Map<string, Thumbnail> thumbnails { get; private set; }
         [Description (nick = "json::channelTitle")]
         public string channel_title { get; set; }
-        public Gee.List<string> tags { get; }
+        public Gee.List<string> tags { get; private set; }
         [Description (nick = "json::categoryId")]
         public string category_id { get; set; }
         [Description (nick = "json::liveBroadcastContent")]
@@ -40,5 +40,10 @@ namespace Utlib {
         public VideoLocalization localized { get; set; }
         [Description (nick = "json::defaultAudioLanguage")]
         public string default_audio_language { get; set; }
+
+        construct {
+            this.tags = new ArrayList<string> ();
+            this.thumbnails = new HashMap<string, Thumbnail> ();
+        }
     }
 }
