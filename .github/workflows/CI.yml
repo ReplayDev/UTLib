@@ -22,7 +22,7 @@ jobs:
     - name: Build & install UTLib
       run: |
         meson build
-        sudo ninja -C build
+        ninja -C build
     - name: Test UTLib
       run: |
         ninja -C build test
