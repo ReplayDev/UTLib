@@ -96,23 +96,16 @@ requires = [
 ]
 
 
-pkgconfig_conf = configuration_data ()
-pkgconfig_conf.set ('prefix', get_option ('prefix'))
-pkgconfig_conf.set ('libdir', get_option ('libdir'))
-pkgconfig_conf.set ('includedir', get_option ('includedir'))
-pkgconfig_conf.set ('api_name', utlib_api_name)
-pkgconfig_conf.set ('description', 'Yet another wrapper to the YouTube Data API v3')
-pkgconfig_conf.set ('url', 'https://github.com/nahuelwexd/UTLib')
-pkgconfig_conf.set ('version', utlib_version)
-pkgconfig_conf.set ('requires', ', '.join (requires))
-pkgconfig_conf.set ('lib_name', meson.project_name ())
+pkg = import ('pkgconfig')
 
-configure_file (
-            input: 'pc.meson',
-           output: utlib_pc,
-    configuration: pkgconfig_conf,
-          install: true,
-      install_dir: join_paths (get_option ('libdir'), 'pkgconfig')
+pkg.generate (
+    description: 'Yet another wrapper to the YouTube Data API v3',
+       filebase: utlib_api_name,
+           name: utlib_api_name,
+        version: utlib_version,
+            url: 'https://github.com/nahuelwexd/UTLib',
+       requires: requires,
+      libraries: utlib
 )
 
 
