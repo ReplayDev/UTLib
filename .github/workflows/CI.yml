@@ -19,10 +19,7 @@ jobs:
         git clone https://gitlab.gnome.org/BZHDeveloper/vul.git
         meson vul build-vul
         sudo ninja -C build-vul install
-    - name: Build & install UTLib
+    - name: Build & test UTLib
       run: |
         meson build
-        ninja -C build
-    - name: Test UTLib
-      run: |
         ninja -C build test
