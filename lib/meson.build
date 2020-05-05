@@ -69,13 +69,13 @@ custom_target (
         utlib.full_path (),
         '--output',
         '@OUTPUT@',
-        meson.current_build_dir () / utlib_gir
+        join_paths (meson.current_build_dir (), utlib_gir)
     ],
 
          output: utlib_typelib,
         depends: utlib,
         install: true,
-    install_dir: get_option ('libdir') / 'girepository-1.0'
+    install_dir: join_paths (get_option ('libdir'), 'girepository-1.0')
 )
 
 
@@ -114,7 +114,7 @@ configure_file (
            output: utlib_pc,
     configuration: pkgconfig_conf,
           install: true,
-      install_dir: get_option ('libdir') / 'pkgconfig'
+      install_dir: join_paths (get_option ('libdir'), 'pkgconfig')
 )
 
 
@@ -126,5 +126,5 @@ configure_file (
            output: utlib_deps,
     configuration: deps_conf,
           install: true,
-      install_dir: get_option ('datadir') / 'vala' / 'vapi'
+      install_dir: join_paths (get_option ('datadir'), 'vala', 'vapi')
 )
