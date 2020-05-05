@@ -19,7 +19,7 @@ void main (string[] args) {
         "/utlib/video/list/most-popular-videos",
         () => {
             var client = new Client () {
-                api_key = "AIzaSyCSn3I_2mCxfZBttUCAYCsVl-kpOoN4KrU"
+                api_key = Environment.get_variable ("API_KEY")
             };
 
             var video_list_request = client.videos.list ("snippet");
