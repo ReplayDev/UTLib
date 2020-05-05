@@ -9,17 +9,12 @@ jobs:
       API_KEY: ${{ secrets.API_KEY }}
     steps:
     - uses: actions/checkout@v2.1.0
-    - name: Install dependencies
-      run: |
+    - run: |
         sudo apt update
         sudo apt install -y valac libgee-0.8-dev libarchive-dev libgirepository1.0-dev \
              gobject-introspection meson ninja-build libglib2.0-dev libsoup2.4-dev
-    - name: Build & install vul
-      run: |
         git clone https://gitlab.gnome.org/BZHDeveloper/vul.git
         meson vul build-vul
         sudo ninja -C build-vul install
-    - name: Build & test UTLib
-      run: |
         meson build
         ninja -C build test
