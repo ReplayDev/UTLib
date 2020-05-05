@@ -20,9 +20,17 @@ jobs:
         meson vul build-vul
         sudo ninja -C build-vul install
     - name: Build & install UTLib
+      continue-on-error: true
       run: |
         meson build
         ninja -C build
+        sudo ninja -C build install
     - name: Test UTLib
+      continue-on-error: true
       run: |
         ninja -C build test
+    - name: Upload build output
+      uses: actions/upload-artifact@v2
+      with:
+        name: Build output
+        path: build
