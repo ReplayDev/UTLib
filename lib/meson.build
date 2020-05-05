@@ -86,17 +86,15 @@ utlib_dep = declare_dependency (
 )
 
 
-requires = []
+requires = [
+    'glib-2.0',
+    'gobject-2.0',
+    'gee-0.8',
+    'gio-2.0',
+    'libsoup-2.4',
+    'gjson-1.0'
+]
 
-foreach dependency : dependencies
-    name = dependency.name ()
-
-    if name == 'null'
-        name = 'gjson-1.0'
-    endif
-
-    requires += name
-endforeach
 
 pkgconfig_conf = configuration_data ()
 pkgconfig_conf.set ('prefix', get_option ('prefix'))
