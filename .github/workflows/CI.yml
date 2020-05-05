@@ -1,0 +1,28 @@
+on: [push, pull_request]
+name: Continuous Integration
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    env:
+      DEBIAN_FRONTEND: noninteractive
+      API_KEY: ${{ secrets.API_KEY }}
+    steps:
+    - uses: actions/checkout@v2.1.0
+    - name: Install dependencies
+      run: |
+        apt update
+        apt install -y valac libgee-0.8-dev libarchive-dev libgirepository1.0-dev \
+            gobject-introspection meson ninja-build libglib2.0-dev libsoup2.4-dev
+    - name: Build & install vul
+      run: |
+        git clone https://gitlab.gnome.org/BZHDeveloper/vul.git
+        meson vul build-vul
+        ninja -C build-vul install
+    - name: Build & install UTLib
+      run: |
+        meson build
+        ninja -C build install
+    - name: Test UTLib
+      run: |
+        ninja -C build test
