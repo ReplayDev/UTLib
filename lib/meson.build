@@ -69,13 +69,13 @@ custom_target (
         utlib.full_path (),
         '--output',
         '@OUTPUT@',
-        join_paths (meson.current_build_dir (), utlib_gir)
+        meson.current_build_dir () / utlib_gir
     ],
 
          output: utlib_typelib,
         depends: utlib,
         install: true,
-    install_dir: join_paths (get_option ('libdir'), 'girepository-1.0')
+    install_dir: get_option ('libdir') / 'girepository-1.0'
 )
 
 
