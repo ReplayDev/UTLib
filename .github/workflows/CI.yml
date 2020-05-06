@@ -23,5 +23,7 @@ jobs:
         ninja -C build
         sudo ninja -C build install
     - name: Test UTLib
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
       run: |
         ninja -C build test
