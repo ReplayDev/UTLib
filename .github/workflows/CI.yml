@@ -2,7 +2,7 @@ on: [push, pull_request]
 name: Continuous Integration
 jobs:
   build:
-    name: Build
+    name: Build & Test
     runs-on: ubuntu-latest
     container: fedora:latest
     steps:
