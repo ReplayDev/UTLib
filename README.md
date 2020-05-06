@@ -1,5 +1,7 @@
 # UTLib
 
+![Continuous Integration](https://github.com/nahuelwexd/UTLib/workflows/Continuous%20Integration/badge.svg)
+
 Yet another library to wrap the YouTube Data API v3, but this time on Vala.
 
 ## License
