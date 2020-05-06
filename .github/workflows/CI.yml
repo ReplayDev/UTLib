@@ -1,4 +1,9 @@
-on: [push, pull_request]
+on:
+  push:
+    paths:
+    - .github/workflows/*
+    - lib/**
+    - tests/**
 name: Continuous Integration
 jobs:
   build:
@@ -21,12 +26,28 @@ jobs:
       run: |
         meson build --prefix /usr
         ninja -C build
+    - name: Upload vul build files
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-vul
+        path: build-vul
+    - name: Upload UTLib build files
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-utlib
+        path: build
   test:
     name: Test
     runs-on: ubuntu-latest
     container: fedora:latest
     needs: build
     steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: build-vul
+    - uses: actions/download-artifact@v2
+      with:
+        name: build-utlib
     - name: Install dependencies
       run: dnf install -y ninja-build libgee libarchive glib2 libsoup git
     - name: Reinstall vul
@@ -34,4 +55,4 @@ jobs:
     - name: Test UTLib
       env:
         API_KEY: ${{ secrets.API_KEY }}
-      run: ninja -C build test
+      run: ninja -C build-utlib test
