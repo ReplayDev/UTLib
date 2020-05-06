@@ -44,7 +44,7 @@ jobs:
     steps:
     - uses: actions/download-artifact@v2
     - name: Install dependencies
-      run: dnf install -y ninja-build libgee libarchive glib2 libsoup git
+      run: dnf install -y meson ninja-build libgee libarchive glib2 libsoup git
     - name: Reinstall vul
       run: sudo ninja -C build-vul install
     - name: Test UTLib
