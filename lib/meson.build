@@ -115,9 +115,7 @@ deps_conf.set ('deps', '\n'.join (requires))
 configure_file (
             input: 'deps.meson',
            output: utlib_deps,
-    configuration: deps_conf
-)
-
-install_data (join_paths (meson.current_build_dir (), utlib_deps),
-    install_dir: join_paths (get_option ('datadir'), 'vala', 'vapi')
+    configuration: deps_conf,
+          install: true,
+      install_dir: get_option ('datadir') / 'vala' / 'vapi'
 )
