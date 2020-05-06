@@ -15,6 +15,8 @@ Install the following dependencies:
  - `libsoup-2.4`
  - `gjson-1.0`
  - `vala`
+ - `meson`
+ - `ninja`
  - `git`
  - `g-ir-compiler`
 
