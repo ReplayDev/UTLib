@@ -34,7 +34,7 @@ jobs:
     - name: Upload UTLib build files
       uses: actions/upload-artifact@v2
       with:
-        name: build-utlib
+        name: build
         path: build
   test:
     name: Test
@@ -50,4 +50,4 @@ jobs:
     - name: Test UTLib
       env:
         API_KEY: ${{ secrets.API_KEY }}
-      run: meson test -C build-utlib --no-rebuild
+      run: meson test -C build --no-rebuild
