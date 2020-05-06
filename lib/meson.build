@@ -98,14 +98,10 @@ requires = [
 
 pkg = import ('pkgconfig')
 
-pkg.generate (
+pkg.generate (utlib,
     description: 'Yet another wrapper to the YouTube Data API v3',
        filebase: utlib_api_name,
-           name: utlib_api_name,
-        version: utlib_version,
-            url: 'https://github.com/nahuelwexd/UTLib',
-       requires: requires,
-      libraries: utlib
+            url: 'https://github.com/nahuelwexd/UTLib'
 )
 
 
