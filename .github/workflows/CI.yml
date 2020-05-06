@@ -2,7 +2,7 @@ on: [push, pull_request]
 name: Continuous Integration
 jobs:
   build:
-    name: Build & Test
+    name: Build
     runs-on: ubuntu-latest
     container: fedora:latest
     steps:
@@ -17,13 +17,21 @@ jobs:
         meson vul build-vul --prefix /usr --buildtype release
         ninja -C build-vul
         sudo ninja -C build-vul install
-    - name: Build & install UTLib
+    - name: Build UTLib
       run: |
         meson build --prefix /usr
         ninja -C build
-        sudo ninja -C build install
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    needs: build
+    steps:
+    - name: Install dependencies
+      run: dnf install -y ninja-build libgee libarchive glib2 libsoup git
+    - name: Reinstall vul
+      run: sudo ninja -C build-vul install
     - name: Test UTLib
       env:
         API_KEY: ${{ secrets.API_KEY }}
-      run: |
-        ninja -C build test
+      run: ninja -C build test
