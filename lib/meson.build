@@ -86,16 +86,6 @@ utlib_dep = declare_dependency (
 )
 
 
-requires = [
-    'glib-2.0',
-    'gobject-2.0',
-    'gee-0.8',
-    'gio-2.0',
-    'libsoup-2.4',
-    'gjson-1.0'
-]
-
-
 pkg = import ('pkgconfig')
 
 pkg.generate (utlib,
@@ -104,6 +94,12 @@ pkg.generate (utlib,
             url: 'https://github.com/nahuelwexd/UTLib'
 )
 
+
+requires = []
+
+foreach dependency : dependencies
+    requires += dependency.name ()
+endforeach
 
 deps_conf = configuration_data ()
 deps_conf.set ('deps', '\n'.join (requires))
