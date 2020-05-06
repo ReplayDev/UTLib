@@ -46,7 +46,7 @@ jobs:
     - name: Install dependencies
       run: dnf install -y meson ninja-build libgee libarchive glib2 libsoup git
     - name: Reinstall vul
-      run: sudo ninja -C build-vul install
+      run: sudo meson install -C build-vul --no-rebuild
     - name: Test UTLib
       env:
         API_KEY: ${{ secrets.API_KEY }}
