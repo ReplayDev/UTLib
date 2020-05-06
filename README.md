@@ -4,6 +4,28 @@
 
 Yet another library to wrap the YouTube Data API v3, but this time on Vala.
 
+## Build & Install
+
+Install the following dependencies:
+
+ - `glib-2.0`
+ - `gobject-2.0`
+ - `gee-0.8`
+ - `gio-2.0`
+ - `libsoup-2.4`
+ - `gjson-1.0`
+ - `vala`
+ - `git`
+ - `g-ir-compiler`
+
+Run the following commands:
+
+```sh
+git clone https://github.com/nahuelwexd/UTLib.git
+meson UTLib build --prefix /usr --buildtype release
+ninja -C build install
+```
+
 ## License
 
 This project is licensed under the [GNU General Public License v3](COPYING) or
