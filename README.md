@@ -38,7 +38,7 @@ meson UTLib build --prefix /usr --buildtype release
 ninja -C build install
 ```
 
-Note that if you don't have `gjson-1.0` installed on your system, meson will use
+Note that if you don't have `gjson-1.0` installed on your system, `meson` will use
 wrap in order to get a git version of it. Also note that `ninja` will ask you
 for a password if you do not have enough permissions to install files.
 
