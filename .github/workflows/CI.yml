@@ -16,21 +16,10 @@ jobs:
       run: |
         dnf install -y vala libgee-devel libarchive-devel gobject-introspection-devel \
             gobject-introspection meson ninja-build glib2-devel libsoup-devel git
-    - name: Build & install vul
-      run: |
-        git clone https://gitlab.gnome.org/BZHDeveloper/vul.git
-        meson vul build-vul --prefix /usr --buildtype release
-        ninja -C build-vul
-        sudo ninja -C build-vul install
     - name: Build UTLib
       run: |
         meson build --prefix /usr
         ninja -C build
-    - name: Upload vul build files
-      uses: actions/upload-artifact@v2
-      with:
-        name: build-vul
-        path: build-vul
     - name: Upload UTLib build files
       uses: actions/upload-artifact@v2
       with:
@@ -45,8 +34,6 @@ jobs:
     - uses: actions/download-artifact@v2
     - name: Install dependencies
       run: dnf install -y meson ninja-build libgee libarchive glib2 libsoup git
-    - name: Reinstall vul
-      run: sudo meson install -C build-vul --no-rebuild
     - name: Ensure execution permissions on tests
       run: chmod -v +x build/tests/*-test
     - name: Test UTLib
