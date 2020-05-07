@@ -47,7 +47,7 @@ for a password if you do not have enough permissions to install files.
 This project is licensed under the [GNU General Public License v3](COPYING) or
 any later version.
 
-[TL;DR](https://www.tldrlegal.com/l/gpl-3.0): You may copy, distribute and modify
-the software as long as you track changes/dates in source files. Any modifications
-to of software including (via compiler) GPL-licensed code must also be made available
-under the GPL along with build & install instructions.
+[tl;dr](https://www.tldrlegal.com/l/gpl-3.0): You may copy, distribute and modify
+this library as long as you track changes/dates in source files. Any modifications
+to GPL-licensed code must also be made available under the GPL along with build
+& install instructions.
