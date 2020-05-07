@@ -1,9 +1,9 @@
 on:
   push:
-    paths:
-    - .github/workflows/*
-    - lib/**
-    - tests/**
+    paths-ignore:
+    - COPYING
+    - README.md
+    - .editorconfig
 name: Continuous Integration
 jobs:
   build:
