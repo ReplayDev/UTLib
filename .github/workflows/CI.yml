@@ -29,6 +29,7 @@ jobs:
     - name: Upload build files
       uses: actions/upload-artifact@v2
       with:
+        name: Build files
         path: .
   test:
     name: Test
@@ -37,6 +38,8 @@ jobs:
     needs: build
     steps:
     - uses: actions/download-artifact@v2
+      with:
+        name: Build files
     - name: Install dependencies
       run: dnf install -y meson ninja-build libgee libarchive glib2 libsoup git
     - name: Reinstall vul
