@@ -3,6 +3,9 @@
 <a href="https://github.com/nahuelwexd/UTLib/commits/master">
   <img alt="Continuous Integration" href="https://github.com/nahuelwexd/UTLib/workflows/Continuous%20Integration/bagde.svg">
 </a>
+<a href="COPYING">
+  <img alt="License" href="https://img.shields.io/github/license/nahuelwexd/UTLib?label=License&logo=gnu">
+</a>
 
 Yet another library to wrap the YouTube Data API v3, but this time on Vala.
 
