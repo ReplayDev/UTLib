@@ -50,4 +50,4 @@ jobs:
     - name: Test UTLib
       env:
         API_KEY: ${{ secrets.API_KEY }}
-      run: meson test -C build --no-rebuild
+      run: sudo meson test -C build --no-rebuild
