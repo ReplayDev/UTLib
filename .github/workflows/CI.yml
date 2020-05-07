@@ -7,7 +7,7 @@ on:
 name: Continuous Integration
 jobs:
   build:
-    name: Build & Test
+    name: Build
     runs-on: ubuntu-latest
     container: fedora:latest
     steps:
@@ -26,7 +26,30 @@ jobs:
       run: |
         meson build --prefix /usr
         ninja -C build
+    - name: Upload vul build files
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-vul
+        path: build-vul
+    - name: Upload UTLib build files
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: build
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    needs: build
+    steps:
+    - uses: actions/download-artifact@v2
+    - name: Install dependencies
+      run: dnf install -y meson ninja-build libgee libarchive glib2 libsoup git
+    - name: Reinstall vul
+      run: sudo meson install -C build-vul --no-rebuild
+    - name: Ensure execution permissions on tests
+      run: chmod -v +x build/tests/*-test
     - name: Test UTLib
       env:
         API_KEY: ${{ secrets.API_KEY }}
-      run: ninja -C build test
+      run: meson test -C build --no-rebuild
