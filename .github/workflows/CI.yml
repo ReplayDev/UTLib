@@ -26,16 +26,10 @@ jobs:
       run: |
         meson build --prefix /usr
         ninja -C build
-    - name: Upload vul build files
+    - name: Upload build files
       uses: actions/upload-artifact@v2
       with:
-        name: build-vul
-        path: build-vul
-    - name: Upload UTLib build files
-      uses: actions/upload-artifact@v2
-      with:
-        name: build
-        path: build
+        path: .
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -50,4 +44,4 @@ jobs:
     - name: Test UTLib
       env:
         API_KEY: ${{ secrets.API_KEY }}
-      run: sudo meson test -C build --no-rebuild
+      run: meson test -C build --no-rebuild
