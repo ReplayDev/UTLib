@@ -1,6 +1,8 @@
 # UTLib
 
-![Continuous Integration](https://github.com/nahuelwexd/UTLib/workflows/Continuous%20Integration/badge.svg)
+<a href="https://github.com/nahuelwexd/UTLib/commits/master">
+  <img alt="Continuous Integration" href="https://github.com/nahuelwexd/UTLib/workflows/Continuous%20Integration/bagde.svg">
+</a>
 
 Yet another library to wrap the YouTube Data API v3, but this time on Vala.
 
