@@ -7,7 +7,12 @@
   <img alt="License" href="https://img.shields.io/github/license/nahuelwexd/UTLib?label=License&logo=gnu">
 </a>
 
-Yet another library to wrap the YouTube Data API v3, but this time on Vala.
+UTLib is a YouTube Data API client library for Vala, that enables the access to
+all the YouTube data without the worry of managing http requests or parsing JSON
+responses.
+
+This library is written mainly for [UniTube GTK](https://github.com/nahuelwexd/UniTube-GTK),
+but you can use it where you want as long you respect the [license](#License)
 
 ## Build & Install
 
