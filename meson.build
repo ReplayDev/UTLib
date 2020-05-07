@@ -10,7 +10,7 @@ gobject_dep = dependency ('gobject-2.0')
 gee_dep = dependency ('gee-0.8')
 gio_dep = dependency ('gio-2.0')
 soup_dep = dependency ('libsoup-2.4')
-gjson_dep = dependency ('gjson-1.0')
+gjson_dep = dependency ('gjson-1.0', fallback: ['vul', 'gjson_dep'])
 
 
 subdir ('lib')
