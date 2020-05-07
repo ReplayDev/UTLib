@@ -16,27 +16,31 @@ but you can use it where you want as long you respect the [license](#License)
 
 ## Build & Install
 
-Install the following dependencies:
+This library can be builded by installing the following dependencies:
 
- - `glib-2.0`
- - `gobject-2.0`
- - `gee-0.8`
- - `gio-2.0`
- - `libsoup-2.4`
- - `gjson-1.0`
- - `vala`
- - `meson`
- - `ninja`
- - `git`
- - `g-ir-compiler`
+- `glib-2.0`
+- `gobject-2.0`
+- `gee-0.8`
+- `gio-2.0`
+- `libsoup-2.4`
+- `gjson-1.0`
+- `vala`
+- `g-ir-compiler`
+- `meson`
+- `ninja`
+- `git`
 
-Run the following commands:
+and running the following commands:
 
-```sh
+```shell
 git clone https://github.com/nahuelwexd/UTLib.git
 meson UTLib build --prefix /usr --buildtype release
 ninja -C build install
 ```
+
+Note that if you don't have `gjson-1.0` installed on your system, meson will use
+wrap in order to get a git version of it. Also note that `ninja` will ask you
+for a password if you do not have enough permissions to install files.
 
 ## License
 
