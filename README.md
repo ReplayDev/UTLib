@@ -1,10 +1,10 @@
 # UTLib
 
 <a href="https://github.com/nahuelwexd/UTLib/commits/master">
-  <img alt="Continuous Integration" href="https://github.com/nahuelwexd/UTLib/workflows/Continuous%20Integration/bagde.svg">
+  <img alt="Continuous Integration" src="https://github.com/nahuelwexd/UTLib/workflows/Continuous%20Integration/badge.svg">
 </a>
 <a href="COPYING">
-  <img alt="License" href="https://img.shields.io/github/license/nahuelwexd/UTLib?label=License&logo=gnu">
+  <img alt="License" src="https://img.shields.io/github/license/nahuelwexd/UTLib?label=License&logo=gnu">
 </a>
 
 UTLib is a YouTube Data API client library for Vala, that enables the access to
