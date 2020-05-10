@@ -3,61 +3,60 @@ using Utlib;
 void main (string[] args) {
     Test.init (ref args);
 
+    var client = new Client () {
+        api_key = Environment.get_variable ("API_KEY")
+    };
+
     Test.add_func (
         "/utlib/video/list/by-video-id",
         () => {
-            var client = new Client () {
-                api_key = Environment.get_variable ("API_KEY")
-            };
+            var request = client.videos.list ("snippet");
+            request.id = "Ks-_Mh1QhMc";
 
-            var video_list_request = client.videos.list ("snippet");
-            video_list_request.id = "Ks-_Mh1QhMc";
-
-            var video_list_response = video_list_request.execute ();
-
-            assert_nonnull (video_list_response);
-            assert_nonnull (video_list_response.items);
-            debug (@"$(video_list_response.items.size)");
-            assert (video_list_response.items.size == 1);
+            try {
+                var response = request.execute ();
+                assert (response.items.size == 1);
+                assert (response.items[0].id == request.id);
+            } catch (Error e) {
+                assert_not_reached ();
+            }
         }
     );
 
     Test.add_func (
         "/utlib/video/list/multiple-video-ids",
         () => {
-            var client = new Client () {
-                api_key = Environment.get_variable ("API_KEY")
-            };
+            var request = client.videos.list ("snippet");
+            request.id = "Ks-_Mh1QhMc,c0KYU2j0TM4,eIho2S0ZahI";
 
-            var video_list_request = client.videos.list ("snippet");
-            video_list_request.id = "Ks-_Mh1QhMc,c0KYU2j0TM4,eIho2S0ZahI";
+            try {
+                var response = request.execute ();
+                assert (response.items.size == 3);
 
-            var video_list_response = video_list_request.execute ();
-
-            assert_nonnull (video_list_response);
-            assert_nonnull (video_list_response.items);
-            debug (@"$(video_list_response.items.size)");
-            assert (video_list_response.items.size == 3);
+                assert (string.joinv (",", response.items.to_array ()) == request.id);
+            } catch (Error e) {
+                assert_not_reached ();
+            }
         }
     );
 
     Test.add_func (
         "/utlib/video/list/most-popular-videos",
         () => {
-            var client = new Client () {
-                api_key = Environment.get_variable ("API_KEY")
-            };
+            var request = client.videos.list ("snippet");
+            request.chart = "mostPopular";
+            request.region_code = "US";
 
-            var video_list_request = client.videos.list ("snippet");
-            video_list_request.chart = "mostPopular";
-            video_list_request.region_code = "US";
+            try {
+                var response = request.execute ();
+                assert (response.items.size == 5);
 
-            var video_list_response = video_list_request.execute ();
-
-            assert_nonnull (video_list_response);
-            assert_nonnull (video_list_response.items);
-            debug (@"$(video_list_response.items.size)");
-            assert (video_list_response.items.size == 5);
+                foreach (var item in response.items) {
+                    assert (item.kind == "youtube#video");
+                }
+            } catch (Error e) {
+                assert_not_reached ();
+            }
         }
     );
 
