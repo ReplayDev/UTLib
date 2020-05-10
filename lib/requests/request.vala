@@ -49,7 +49,7 @@ namespace Utlib {
         }
 
 
-        public virtual T execute () throws RequestError, ParserError {
+        public virtual T execute () throws RequestError, ParserError, Error {
             var parameters = this.parse_parameters ();
             var uri = @"$(this.url)?$(parameters)";
 
@@ -61,15 +61,12 @@ namespace Utlib {
             var status_code = session.send_message (message);
 
             if (status_code == Status.OK) {
-                try {
-                    var parsed_object = GJson.Object.parse (
-                        (string) message.response_body.data);
-                    var response = (T) deserialize_object (typeof (T), parsed_object);
+                var parsed_object = GJson.Object.parse (
+                    (string) message.response_body.data
+                );
+                var response = (T) deserialize_object (typeof (T), parsed_object);
 
-                    return response;
-                } catch (Error e) {
-                    assert_not_reached ();
-                }
+                return response;
             } else {
                 error (@"error: $status_code\n" +
                     @"message: $((string) message.response_body.data)");
