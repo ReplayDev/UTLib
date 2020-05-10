@@ -45,4 +45,6 @@ jobs:
     - name: Test UTLib
       env:
         API_KEY: ${{ secrets.API_KEY }}
-      run: meson test -C build --no-rebuild
+      run: |
+        echo "::add-mask::$API_KEY"
+        meson test -C build --no-rebuild
