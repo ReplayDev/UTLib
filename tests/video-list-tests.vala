@@ -33,7 +33,12 @@ void main (string[] args) {
                 var response = request.execute ();
                 assert (response.items.size == 3);
 
-                assert (string.joinv (",", response.items.to_array ()) == request.id);
+                string[] ids = new string[response.items.size];
+                for (var i = 0; i < response.items.size; i++) {
+                    ids[i] = response.items[i].id;
+                }
+
+                assert (string.joinv (",", ids) == request.id);
             } catch (Error e) {
                 assert_not_reached ();
             }
