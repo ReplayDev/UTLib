@@ -44,7 +44,7 @@ namespace Utlib {
         }
 
         construct {
-            client.bind_property ("api-key", this, "key",
+            this.client.bind_property ("api-key", this, "key",
                 BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
         }
 
@@ -120,7 +120,7 @@ namespace Utlib {
             var parsed_parameters = new ArrayList<string> ();
 
             foreach (var item in this.request_parameters.entries) {
-                var parsed_parameter = parse_parameter (item.key, item.value);
+                var parsed_parameter = this.parse_parameter (item.key, item.value);
                 if (parsed_parameter == null) {
                     continue;
                 }
@@ -131,9 +131,7 @@ namespace Utlib {
             return string.joinv ("&", parsed_parameters.to_array ());
         }
 
-        private string? parse_parameter (string prop_name, Parameter param)
-            throws ParserError
-        {
+        private string? parse_parameter (string prop_name, Parameter param) throws ParserError {
             var klass = (ObjectClass) this.get_type ().class_ref ();
             var spec = klass.find_property (prop_name);
 
