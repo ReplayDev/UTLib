@@ -18,6 +18,6 @@
 namespace Utlib {
 
     public errordomain RequestError {
-
+        DUMMY_ERROR_CODE
     }
 }
