@@ -9,6 +9,10 @@ class VideoListTests {
     static void main (string[] args) {
         Test.init (ref args);
 
+        // A dummy instance that we need due to a bug with static classes and
+        // members not being initialized
+        new VideoListTests ();
+
         Test.add_func (
             "/utlib/video/list/by-video-id",
             () => {
