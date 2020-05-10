@@ -49,7 +49,7 @@ namespace Utlib {
         }
 
 
-        public T execute () {
+        public virtual T execute () {
             var parameters = this.parse_parameters ();
             var uri = @"$(this.url)?$(parameters)";
 
@@ -119,7 +119,7 @@ namespace Utlib {
             };
         }
 
-        private string? parse_parameters () {
+        protected string? parse_parameters () {
             var parsed_parameters = new ArrayList<string> ();
 
             foreach (var item in this.request_parameters.entries) {
