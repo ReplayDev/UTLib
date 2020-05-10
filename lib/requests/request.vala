@@ -131,12 +131,16 @@ namespace Utlib {
             return string.joinv ("&", parsed_parameters.to_array ());
         }
 
-        private string? parse_parameter (string prop_name, Parameter param) {
+        private string? parse_parameter (string prop_name, Parameter param)
+            throws ParserError
+        {
             var klass = (ObjectClass) this.get_type ().class_ref ();
             var spec = klass.find_property (prop_name);
 
             if (spec == null) {
-                error (@"$prop_name not found in $(klass.get_name ())");
+                throw new ParserError.PROPERTY_NOT_FOUND (
+                    @"$(klass.get_name ()) has no $prop_name property"
+                );
             }
 
             string param_value = "";
@@ -159,7 +163,9 @@ namespace Utlib {
 
             if (param.is_required && param_value == "") {
                 if (param.default_value == "") {
-                    error (@"$(param.name)'s default value is required is not setted");
+                    throw new ParserError.REQUIRED_PARAM_NOT_SET (
+                        @"$(param.name) is required but it is not setted and has no default value"
+                    );
                 } else {
                     param_value = param.default_value;
                 }
