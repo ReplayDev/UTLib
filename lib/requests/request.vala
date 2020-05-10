@@ -168,7 +168,7 @@ namespace Utlib {
             }
 
             if (param.is_required && param_value == "") {
-                warning (@"$(param.name) is required and is not setted");
+                debug (@"$(param.name) is required and is not setted");
 
                 if (param.default_value == "") {
                     throw new ParserError.REQUIRED_PARAM_NOT_SET (
