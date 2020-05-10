@@ -18,6 +18,7 @@
 namespace Utlib {
 
     public errordomain ParserError {
-        PROPERTY_NOT_FOUND
+        PROPERTY_NOT_FOUND,
+        REQUIRED_PARAM_NOT_SET
     }
 }
