@@ -60,16 +60,16 @@ namespace Utlib {
 
             var status_code = session.send_message (message);
 
-            if (status_code == Status.OK) {
-                var parsed_object = GJson.Object.parse (
-                    (string) message.response_body.data
-                );
-                var response = (T) deserialize_object (typeof (T), parsed_object);
+            var parsed_object = GJson.Object.parse (
+                (string) message.response_body.data
+            );
 
-                return response;
+            if (status_code == Status.OK) {
+                return (T) deserialize_object (typeof (T), parsed_object);
             } else {
-                error (@"error: $status_code\n" +
-                    @"message: $((string) message.response_body.data)");
+                throw new RequestError.SERVER_ERROR (
+                    parsed_object.get_object_member ("error").get_string_member ("message")
+                );
             }
         }
 
