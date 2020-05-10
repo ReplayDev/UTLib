@@ -6,6 +6,12 @@ on:
     - .editorconfig
 name: Continuous Integration
 jobs:
+  lint:
+    name: Check linting
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+    - uses: elementary/actions/vala-lint@master
   build:
     name: Build
     runs-on: ubuntu-latest
