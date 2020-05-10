@@ -53,8 +53,6 @@ namespace Utlib {
             var parameters = this.parse_parameters ();
             var uri = @"$(this.url)?$(parameters)";
 
-            debug (@"The parsed url is: $uri");
-
             var session = this.client.session;
             var message = new Message ("GET", uri);
 
@@ -78,7 +76,6 @@ namespace Utlib {
 
         protected virtual void init_parameters () {
             if (request_parameters == null) {
-                debug ("request_parameters is null. Creating new instance.");
                 request_parameters = new HashMap<string, Parameter> ();
             }
 
@@ -125,12 +122,10 @@ namespace Utlib {
             foreach (var item in this.request_parameters.entries) {
                 var parsed_parameter = parse_parameter (item.key, item.value);
                 if (parsed_parameter == null) {
-                    debug (@"$(item.value.name) not parsed");
                     continue;
                 }
 
                 parsed_parameters.add (parsed_parameter);
-                debug (@"$parsed_parameter added");
             }
 
             return string.joinv ("&", parsed_parameters.to_array ());
@@ -148,15 +143,12 @@ namespace Utlib {
 
             switch (spec.value_type) {
                 case Type.STRING:
-                    debug (@"$prop_name is string");
-
                     Value? val = Value (spec.value_type);
                     this.get_property (prop_name, ref val);
 
                     param_value = val.get_string ();
 
                     if (param_value == null) {
-                        debug (@"$prop_name's value is null");
                         param_value = "";
                     }
 
@@ -166,8 +158,6 @@ namespace Utlib {
             }
 
             if (param.is_required && param_value == "") {
-                warning (@"$(param.name) is required and is not setted");
-
                 if (param.default_value == "") {
                     error (@"$(param.name)'s default value is required is not setted");
                 } else {
