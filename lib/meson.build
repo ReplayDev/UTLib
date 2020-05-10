@@ -4,6 +4,9 @@ sources = files (
     'data/video-localization.vala',
     'data/video-snippet.vala',
 
+    'errors/parser-error.vala',
+    'errors/request-error.vala',
+
     'requests/parameter.vala',
     'requests/request.vala',
     'requests/video-list-request.vala',
