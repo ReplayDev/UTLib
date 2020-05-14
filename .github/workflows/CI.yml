@@ -4,6 +4,7 @@ on:
     - COPYING
     - README.md
     - .editorconfig
+    - UTLib.doap
 name: Continuous Integration
 jobs:
   lint:
