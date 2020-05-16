@@ -92,6 +92,7 @@ utlib_dep = declare_dependency (
 pkg = import ('pkgconfig')
 
 pkg.generate (utlib,
+       requires: soup_dep,
     description: 'Yet another wrapper to the YouTube Data API v3',
        filebase: utlib_api_name,
             url: 'https://github.com/nahuelwexd/UTLib'
