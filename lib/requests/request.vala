@@ -73,6 +73,43 @@ namespace Utlib {
             }
         }
 
+         public virtual async T execute_async () throws RequestError, ParserError, Error {
+            // Parse all parameters in the request
+            var parameters = this.parse_parameters ();
+            var uri = @"$(this.url)?$(parameters)";
+
+            debug (@"The parsed url is: $uri");
+
+            // Get the session for the current client instance and create a new
+            // message
+            var session = this.client.session;
+            var message = new Message ("GET", uri);
+
+            // Send the message asynchronously and grab the InputStream as a
+            // DataInputStream in order to read it
+            var istream = yield session.send_async (message);
+            var distream = new DataInputStream (istream);
+
+            // Create a new StringBuilder to save the response body
+            var builder = new StringBuilder ();
+
+            // Read it
+            string line;
+            while ((line = yield distream.read_line_async ()) != null) {
+                builder.append (line);
+            }
+
+            var parsed_object = yield GJson.Object.parse_async (builder.str);
+
+            if (message.status_code == Status.OK) {
+                return (T) deserialize_object (typeof (T), parsed_object);
+            } else {
+                throw new RequestError.SERVER_ERROR (
+                    parsed_object.get_object_member ("error").get_string_member ("message")
+                );
+            }
+        }
+
         protected virtual void init_parameters () {
             if (request_parameters == null) {
                 debug ("request_parameters is null. Creating new instance.");
