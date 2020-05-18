@@ -49,4 +49,4 @@ jobs:
         API_KEY: ${{ secrets.API_KEY }}
       run: |
         echo "::add-mask::$API_KEY"
-        meson test -C build --no-rebuild
+        meson test -C build --no-rebuild --print-errorlogs
