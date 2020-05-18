@@ -44,7 +44,6 @@ class VideoListTests {
                         loop.quit ();
                     } catch {
                         assert_not_reached ();
-                        loop.quit ();
                     }
                 });
 
@@ -95,7 +94,6 @@ class VideoListTests {
                         loop.quit ();
                     } catch (Error e) {
                         assert_not_reached ();
-                        loop.quit ();
                     }
                 });
 
@@ -143,7 +141,6 @@ class VideoListTests {
                         loop.quit ();
                     } catch (Error e) {
                         assert_not_reached ();
-                        loop.quit ();
                     }
                 });
 
