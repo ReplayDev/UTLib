@@ -49,6 +49,11 @@ namespace Utlib {
         }
 
 
+        /**
+         * Execute this request synchronously.
+         *
+         * @return The parsed response of this request.
+         */
         public virtual T execute () throws RequestError, ParserError, Error {
             var parameters = this.parse_parameters ();
             var uri = @"$(this.url)?$(parameters)";
@@ -79,7 +84,12 @@ namespace Utlib {
             }
         }
 
-         public virtual async T execute_async () throws RequestError, ParserError, Error {
+        /**
+         * Execute this request asynchronously.
+         *
+         * @return The parsed response of this request.
+         */
+        public virtual async T execute_async () throws RequestError, ParserError, Error {
             // Parse all parameters in the request
             var parameters = this.parse_parameters ();
             var uri = @"$(this.url)?$(parameters)";
