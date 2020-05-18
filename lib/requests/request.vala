@@ -58,13 +58,19 @@ namespace Utlib {
             var session = this.client.session;
             var message = new Message ("GET", uri);
 
-            var status_code = session.send_message (message);
+            var istream = session.send (message);
+            var distream = new DataInputStream (istream);
 
-            var parsed_object = GJson.Object.parse (
-                (string) message.response_body.data
-            );
+            var builder = new StringBuilder ();
 
-            if (status_code == Status.OK) {
+            string line;
+            while ((line = distream.read_line ()) != null) {
+                builder.append (line);
+            }
+
+            var parsed_object = GJson.Object.parse (builder.str);
+
+            if (message.status_code == Status.OK) {
                 return (T) deserialize_object (typeof (T), parsed_object);
             } else {
                 throw new RequestError.SERVER_ERROR (
