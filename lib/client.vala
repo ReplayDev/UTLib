@@ -15,33 +15,28 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Soup;
+public class Utlib.Client : Object {
 
-namespace Utlib {
-
-    public class Client : Object {
-
-        private VideosResource _videos;
+    private Utlib.VideosResource _videos;
 
 
-        public string api_key { get; set; }
-        public Session session { get; construct; }
+    public string api_key { get; set; }
+    public Soup.Session session { get; construct; }
 
-        public VideosResource videos {
-            get {
-                return this._videos;
-            }
+    public Utlib.VideosResource videos {
+        get {
+            return this._videos;
         }
+    }
 
 
-        public Client (Session session = new Session ()) {
-            Object (
-                session: session
-            );
-        }
+    public Client (Soup.Session session = new Soup.Session ()) {
+        Object (
+            session: session
+        );
+    }
 
-        construct {
-            this._videos = new VideosResource (this);
-        }
+    construct {
+        this._videos = new Utlib.VideosResource (this);
     }
 }

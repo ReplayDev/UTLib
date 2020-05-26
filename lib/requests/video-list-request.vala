@@ -15,123 +15,120 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Utlib {
+public class Utlib.VideoListRequest : Utlib.Request<Utlib.VideoListResponse> {
 
-    public class VideoListRequest : Request<VideoListResponse> {
+    public string part { get; private set; }
+    public string chart { get; set; }
+    public string id { get; set; }
+    public string my_rating { get; set; }
+    public string hl { get; set; }
+    public uint max_height { get; set; }
+    public uint max_results { get; set; }
+    public uint max_width { get; set; }
+    public string on_behalf_of_content_owner { get; set; }
+    public string page_token { get; set; }
+    public string region_code { get; set; }
+    public string video_category_id { get; set; }
 
-        public string part { get; private set; }
-        public string chart { get; set; }
-        public string id { get; set; }
-        public string my_rating { get; set; }
-        public string hl { get; set; }
-        public uint max_height { get; set; }
-        public uint max_results { get; set; }
-        public uint max_width { get; set; }
-        public string on_behalf_of_content_owner { get; set; }
-        public string page_token { get; set; }
-        public string region_code { get; set; }
-        public string video_category_id { get; set; }
+    public override string url {
+        get {
+            return "https://www.googleapis.com/youtube/v3/videos";
+        }
+    }
 
-        public override string url {
-            get {
-                return "https://www.googleapis.com/youtube/v3/videos";
+
+    internal VideoListRequest (Utlib.Client client, string part) {
+        base (client);
+        this.part = part;
+        this.init_parameters ();
+    }
+
+    protected override void init_parameters () {
+        base.init_parameters ();
+
+        this.request_parameters.set (
+            "part", new Utlib.Parameter () {
+                name = "part",
+                is_required = true,
+                default_value = ""
             }
-        }
-
-
-        internal VideoListRequest (Client client, string part) {
-            base (client);
-            this.part = part;
-            this.init_parameters ();
-        }
-
-        protected override void init_parameters () {
-            base.init_parameters ();
-
-            this.request_parameters.set (
-                "part", new Parameter () {
-                    name = "part",
-                    is_required = true,
-                    default_value = ""
-                }
-            );
-            this.request_parameters.set (
-                "chart", new Parameter () {
-                    name = "chart",
-                    is_required = false,
-                    default_value = ""
-                }
-            );
-            this.request_parameters.set (
-                "id", new Parameter () {
-                    name = "id",
-                    is_required = false,
-                    default_value = ""
-                }
-            );
-            this.request_parameters.set (
-                "my-rating", new Parameter () {
-                    name = "myRating",
-                    is_required = false,
-                    default_value = ""
-                }
-            );
-            this.request_parameters.set (
-                "hl", new Parameter () {
-                    name = "hl",
-                    is_required = false,
-                    default_value = ""
-                }
-            );
-            this.request_parameters.set (
-                "max-height", new Parameter () {
-                    name = "maxHeight",
-                    is_required = false,
-                    default_value = ""
-                }
-            );
-            this.request_parameters.set (
-                "max-results", new Parameter () {
-                    name = "maxResults",
-                    is_required = false,
-                    default_value = "5"
-                }
-            );
-            this.request_parameters.set (
-                "max-width", new Parameter () {
-                    name = "maxWidth",
-                    is_required = false,
-                    default_value = ""
-                }
-            );
-            this.request_parameters.set (
-                "on-behalf-of-content-owner", new Parameter () {
-                    name = "onBehalfOfContentOwner",
-                    is_required = false,
-                    default_value = ""
-                }
-            );
-            this.request_parameters.set (
-                "page-token", new Parameter () {
-                    name = "pageToken",
-                    is_required = false,
-                    default_value = ""
-                }
-            );
-            this.request_parameters.set (
-                "region-code", new Parameter () {
-                    name = "regionCode",
-                    is_required = false,
-                    default_value = ""
-                }
-            );
-            this.request_parameters.set (
-                "video-category-id", new Parameter () {
-                    name = "videoCategoryId",
-                    is_required = false,
-                    default_value = "0"
-                }
-            );
-        }
+        );
+        this.request_parameters.set (
+            "chart", new Utlib.Parameter () {
+                name = "chart",
+                is_required = false,
+                default_value = ""
+            }
+        );
+        this.request_parameters.set (
+            "id", new Utlib.Parameter () {
+                name = "id",
+                is_required = false,
+                default_value = ""
+            }
+        );
+        this.request_parameters.set (
+            "my-rating", new Utlib.Parameter () {
+                name = "myRating",
+                is_required = false,
+                default_value = ""
+            }
+        );
+        this.request_parameters.set (
+            "hl", new Utlib.Parameter () {
+                name = "hl",
+                is_required = false,
+                default_value = ""
+            }
+        );
+        this.request_parameters.set (
+            "max-height", new Utlib.Parameter () {
+                name = "maxHeight",
+                is_required = false,
+                default_value = ""
+            }
+        );
+        this.request_parameters.set (
+            "max-results", new Utlib.Parameter () {
+                name = "maxResults",
+                is_required = false,
+                default_value = "5"
+            }
+        );
+        this.request_parameters.set (
+            "max-width", new Utlib.Parameter () {
+                name = "maxWidth",
+                is_required = false,
+                default_value = ""
+            }
+        );
+        this.request_parameters.set (
+            "on-behalf-of-content-owner", new Utlib.Parameter () {
+                name = "onBehalfOfContentOwner",
+                is_required = false,
+                default_value = ""
+            }
+        );
+        this.request_parameters.set (
+            "page-token", new Utlib.Parameter () {
+                name = "pageToken",
+                is_required = false,
+                default_value = ""
+            }
+        );
+        this.request_parameters.set (
+            "region-code", new Utlib.Parameter () {
+                name = "regionCode",
+                is_required = false,
+                default_value = ""
+            }
+        );
+        this.request_parameters.set (
+            "video-category-id", new Utlib.Parameter () {
+                name = "videoCategoryId",
+                is_required = false,
+                default_value = "0"
+            }
+        );
     }
 }

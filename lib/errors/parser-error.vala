@@ -15,10 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Utlib {
-
-    public errordomain ParserError {
-        PROPERTY_NOT_FOUND,
-        REQUIRED_PARAM_NOT_SET
-    }
+public errordomain Utlib.ParserError {
+    PROPERTY_NOT_FOUND,
+    REQUIRED_PARAM_NOT_SET
 }

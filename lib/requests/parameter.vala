@@ -15,12 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Utlib {
+public class Utlib.Parameter : Object {
 
-    public class Parameter : Object {
-
-        public string name { get; set; }
-        public bool is_required { get; set; }
-        public string default_value { get; set; }
-    }
+    public string name { get; set; }
+    public bool is_required { get; set; }
+    public string default_value { get; set; }
 }
