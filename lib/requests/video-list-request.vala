@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-public class Utlib.VideoListRequest : Request<VideoListResponse> {
+public class Utlib.VideoListRequest : Utlib.Request<Utlib.VideoListResponse> {
 
     public string part { get; private set; }
     public string chart { get; set; }
@@ -37,7 +37,7 @@ public class Utlib.VideoListRequest : Request<VideoListResponse> {
     }
 
 
-    internal VideoListRequest (Client client, string part) {
+    internal VideoListRequest (Utlib.Client client, string part) {
         base (client);
         this.part = part;
         this.init_parameters ();
@@ -47,84 +47,84 @@ public class Utlib.VideoListRequest : Request<VideoListResponse> {
         base.init_parameters ();
 
         this.request_parameters.set (
-            "part", new Parameter () {
+            "part", new Utlib.Parameter () {
                 name = "part",
                 is_required = true,
                 default_value = ""
             }
         );
         this.request_parameters.set (
-            "chart", new Parameter () {
+            "chart", new Utlib.Parameter () {
                 name = "chart",
                 is_required = false,
                 default_value = ""
             }
         );
         this.request_parameters.set (
-            "id", new Parameter () {
+            "id", new Utlib.Parameter () {
                 name = "id",
                 is_required = false,
                 default_value = ""
             }
         );
         this.request_parameters.set (
-            "my-rating", new Parameter () {
+            "my-rating", new Utlib.Parameter () {
                 name = "myRating",
                 is_required = false,
                 default_value = ""
             }
         );
         this.request_parameters.set (
-            "hl", new Parameter () {
+            "hl", new Utlib.Parameter () {
                 name = "hl",
                 is_required = false,
                 default_value = ""
             }
         );
         this.request_parameters.set (
-            "max-height", new Parameter () {
+            "max-height", new Utlib.Parameter () {
                 name = "maxHeight",
                 is_required = false,
                 default_value = ""
             }
         );
         this.request_parameters.set (
-            "max-results", new Parameter () {
+            "max-results", new Utlib.Parameter () {
                 name = "maxResults",
                 is_required = false,
                 default_value = "5"
             }
         );
         this.request_parameters.set (
-            "max-width", new Parameter () {
+            "max-width", new Utlib.Parameter () {
                 name = "maxWidth",
                 is_required = false,
                 default_value = ""
             }
         );
         this.request_parameters.set (
-            "on-behalf-of-content-owner", new Parameter () {
+            "on-behalf-of-content-owner", new Utlib.Parameter () {
                 name = "onBehalfOfContentOwner",
                 is_required = false,
                 default_value = ""
             }
         );
         this.request_parameters.set (
-            "page-token", new Parameter () {
+            "page-token", new Utlib.Parameter () {
                 name = "pageToken",
                 is_required = false,
                 default_value = ""
             }
         );
         this.request_parameters.set (
-            "region-code", new Parameter () {
+            "region-code", new Utlib.Parameter () {
                 name = "regionCode",
                 is_required = false,
                 default_value = ""
             }
         );
         this.request_parameters.set (
-            "video-category-id", new Parameter () {
+            "video-category-id", new Utlib.Parameter () {
                 name = "videoCategoryId",
                 is_required = false,
                 default_value = "0"

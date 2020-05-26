@@ -17,15 +17,15 @@
 
 public class Utlib.VideosResource : Object {
 
-    public Client client { get; construct; }
+    public Utlib.Client client { get; construct; }
 
-    internal VideosResource (Client client) {
+    internal VideosResource (Utlib.Client client) {
         Object (
             client: client
         );
     }
 
-    public VideoListRequest list (string part) {
-        return new VideoListRequest (this.client, part);
+    public Utlib.VideoListRequest list (string part) {
+        return new Utlib.VideoListRequest (this.client, part);
     }
 }

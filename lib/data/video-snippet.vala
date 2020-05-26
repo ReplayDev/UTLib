@@ -15,8 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Gee;
-
 public class Utlib.VideoSnippet : Object {
 
     [Description (nick = "json::publishedAt")]
@@ -25,7 +23,7 @@ public class Utlib.VideoSnippet : Object {
     public string channel_id { get; set; }
     public string title { get; set; }
     public string description { get; set; }
-    public Map<string, Thumbnail> thumbnails { get; private set; }
+    public Gee.Map<string, Utlib.Thumbnail> thumbnails { get; private set; }
     [Description (nick = "json::channelTitle")]
     public string channel_title { get; set; }
     public Gee.List<string> tags { get; private set; }
@@ -35,12 +33,12 @@ public class Utlib.VideoSnippet : Object {
     public string live_broadcast_content { get; set; }
     [Description (nick = "json::defaultLanguage")]
     public string default_language { get; set; }
-    public VideoLocalization localized { get; set; }
+    public Utlib.VideoLocalization localized { get; set; }
     [Description (nick = "json::defaultAudioLanguage")]
     public string default_audio_language { get; set; }
 
     construct {
-        this.thumbnails = new HashMap<string, Thumbnail> ();
-        this.tags = new ArrayList<string> ();
+        this.thumbnails = new Gee.HashMap<string, Utlib.Thumbnail> ();
+        this.tags = new Gee.ArrayList<string> ();
     }
 }
