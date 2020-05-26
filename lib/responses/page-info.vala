@@ -15,13 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Utlib {
+public class Utlib.PageInfo : Object {
 
-    public class PageInfo : Object {
-
-        [Description (nick = "json::totalResults")]
-        public int total_results { get; set; }
-        [Description (nick = "json::resultsPerPage")]
-        public int results_per_page { get; set; }
-    }
+    [Description (nick = "json::totalResults")]
+    public int total_results { get; set; }
+    [Description (nick = "json::resultsPerPage")]
+    public int results_per_page { get; set; }
 }

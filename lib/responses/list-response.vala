@@ -17,18 +17,15 @@
 
 using Gee;
 
-namespace Utlib {
+public abstract class Utlib.ListResponse<T> : Object {
 
-    public abstract class ListResponse<T> : Object {
-
-        public string kind { get; set; }
-        public string etag { get; set; }
-        [Description (nick = "json::nextPageToken")]
-        public string next_page_token { get; set; }
-        [Description (nick = "json::prevPageToken")]
-        public string prev_page_token { get; set; }
-        [Description (nick = "json::pageInfo")]
-        public PageInfo page_info { get; set; }
-        public abstract Gee.List<T> items { get; }
-    }
+    public string kind { get; set; }
+    public string etag { get; set; }
+    [Description (nick = "json::nextPageToken")]
+    public string next_page_token { get; set; }
+    [Description (nick = "json::prevPageToken")]
+    public string prev_page_token { get; set; }
+    [Description (nick = "json::pageInfo")]
+    public PageInfo page_info { get; set; }
+    public abstract Gee.List<T> items { get; }
 }

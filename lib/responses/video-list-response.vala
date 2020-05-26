@@ -17,20 +17,17 @@
 
 using Gee;
 
-namespace Utlib {
+public class Utlib.VideoListResponse : ListResponse<Video> {
 
-    public class VideoListResponse : ListResponse<Video> {
+    private Gee.List<Video> _items;
 
-        private Gee.List<Video> _items;
-
-        public override Gee.List<Video> items {
-            get {
-                return this._items;
-            }
+    public override Gee.List<Video> items {
+        get {
+            return this._items;
         }
+    }
 
-        construct {
-            this._items = new ArrayList<Video> ();
-        }
+    construct {
+        this._items = new ArrayList<Video> ();
     }
 }

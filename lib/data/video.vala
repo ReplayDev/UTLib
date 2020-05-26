@@ -17,13 +17,10 @@
 
 using Gee;
 
-namespace Utlib {
+public class Utlib.Video : Object {
 
-    public class Video : Object {
-
-        public string kind { get; set; }
-        public string etag { get; set; }
-        public string id { get; set; }
-        public VideoSnippet snippet { get; set; }
-    }
+    public string kind { get; set; }
+    public string etag { get; set; }
+    public string id { get; set; }
+    public VideoSnippet snippet { get; set; }
 }

@@ -15,20 +15,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Utlib {
+public class Utlib.VideosResource : Object {
 
-    public class VideosResource : Object {
+    public Client client { get; construct; }
 
-        public Client client { get; construct; }
+    internal VideosResource (Client client) {
+        Object (
+            client: client
+        );
+    }
 
-        internal VideosResource (Client client) {
-            Object (
-                client: client
-            );
-        }
-
-        public VideoListRequest list (string part) {
-            return new VideoListRequest (this.client, part);
-        }
+    public VideoListRequest list (string part) {
+        return new VideoListRequest (this.client, part);
     }
 }

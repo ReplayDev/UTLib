@@ -17,31 +17,28 @@
 
 using Soup;
 
-namespace Utlib {
+public class Utlib.Client : Object {
 
-    public class Client : Object {
-
-        private VideosResource _videos;
+    private VideosResource _videos;
 
 
-        public string api_key { get; set; }
-        public Session session { get; construct; }
+    public string api_key { get; set; }
+    public Session session { get; construct; }
 
-        public VideosResource videos {
-            get {
-                return this._videos;
-            }
+    public VideosResource videos {
+        get {
+            return this._videos;
         }
+    }
 
 
-        public Client (Session session = new Session ()) {
-            Object (
-                session: session
-            );
-        }
+    public Client (Session session = new Session ()) {
+        Object (
+            session: session
+        );
+    }
 
-        construct {
-            this._videos = new VideosResource (this);
-        }
+    construct {
+        this._videos = new VideosResource (this);
     }
 }

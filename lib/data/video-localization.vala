@@ -15,11 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Utlib {
+public class Utlib.VideoLocalization : Object {
 
-    public class VideoLocalization : Object {
-
-        public string title { get; set; }
-        public string description { get; set; }
-    }
+    public string title { get; set; }
+    public string description { get; set; }
 }
