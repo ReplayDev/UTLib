@@ -20,6 +20,14 @@ public class Utlib.ParametersService : Object {
     private Gee.Map<string, Utlib.Parameter> parameters;
 
     construct {
-        parameters = new Gee.HashMap<string, Utlib.Parameter> ();
+        this.parameters = new Gee.HashMap<string, Utlib.Parameter> ();
+    }
+
+    public new Utlib.Parameter @get (string prop_name) {
+        return this.parameters[prop_name];
+    }
+
+    public new void @set (string prop_name, Utlib.Parameter param) {
+        this.parameters[prop_name] = param;
     }
 }
