@@ -18,7 +18,7 @@
 public abstract class Utlib.Request<T> : Object {
 
     public Utlib.Client client { get; construct; }
-    protected Gee.Map<string, Utlib.Parameter> request_parameters { get; set; }
+    protected Utlib.ParametersService params_service { get; set; }
 
     public string access_token { get; set; }
     public string callback { get; set; }
@@ -49,7 +49,7 @@ public abstract class Utlib.Request<T> : Object {
      * @return The parsed response of this request.
      */
     public virtual T execute () throws Utlib.RequestError, Utlib.ParserError, Error {
-        var parameters = this.parse_parameters ();
+        var parameters = this.params_service.parse_parameters ();
         var uri = @"$(this.url)?$(parameters)";
 
         debug (@"The parsed url is: $uri");
@@ -85,7 +85,7 @@ public abstract class Utlib.Request<T> : Object {
      */
     public virtual async T execute_async () throws Utlib.RequestError, Utlib.ParserError, Error {
         // Parse all parameters in the request
-        var parameters = this.parse_parameters ();
+        var parameters = this.params_service.parse_parameters ();
         var uri = @"$(this.url)?$(parameters)";
 
         debug (@"The parsed url is: $uri");
@@ -121,108 +121,45 @@ public abstract class Utlib.Request<T> : Object {
     }
 
     protected virtual void init_parameters () {
-        if (request_parameters == null) {
-            debug ("request_parameters is null. Creating new instance.");
-            request_parameters = new Gee.HashMap<string, Utlib.Parameter> ();
+        if (params_service == null) {
+            debug ("params_service is null. Creating new instance.");
+            params_service = new Utlib.ParametersService (this);
         }
 
-        this.request_parameters["access-token"] = new Utlib.Parameter () {
+        this.params_service["access-token"] = new Utlib.Parameter () {
             name = "access_token",
             is_required = false,
             default_value = ""
         };
-        this.request_parameters["callback"] = new Utlib.Parameter () {
+        this.params_service["callback"] = new Utlib.Parameter () {
             name = "callback",
             is_required = false,
             default_value = ""
         };
-        this.request_parameters["fields"] = new Utlib.Parameter () {
+        this.params_service["fields"] = new Utlib.Parameter () {
             name = "fields",
             is_required = false,
             default_value = ""
         };
-        this.request_parameters["key"] = new Utlib.Parameter () {
+        this.params_service["key"] = new Utlib.Parameter () {
             name = "key",
             is_required = false,
             default_value = ""
         };
-        this.request_parameters["pretty-print"] = new Utlib.Parameter () {
+        this.params_service["pretty-print"] = new Utlib.Parameter () {
             name = "prettyPrint",
             is_required = false,
             default_value = "true"
         };
-        this.request_parameters["quota-user"] = new Utlib.Parameter () {
+        this.params_service["quota-user"] = new Utlib.Parameter () {
             name = "quotaUser",
             is_required = false,
             default_value = ""
         };
-        this.request_parameters["user-ip"] = new Utlib.Parameter () {
+        this.params_service["user-ip"] = new Utlib.Parameter () {
             name = "userIp",
             is_required = false,
             default_value = ""
         };
-    }
-
-    protected string? parse_parameters () throws Utlib.ParserError {
-        var parsed_parameters = new Gee.ArrayList<string> ();
-
-        foreach (var item in this.request_parameters.entries) {
-            var parsed_parameter = this.parse_parameter (item.key, item.value);
-            if (parsed_parameter == null) {
-                debug (@"$(item.value.name) not parsed");
-                continue;
-            }
-
-            parsed_parameters.add (parsed_parameter);
-            debug (@"$parsed_parameter added");
-        }
-
-        return string.joinv ("&", parsed_parameters.to_array ());
-    }
-
-    private string? parse_parameter (string prop_name, Utlib.Parameter param) throws Utlib.ParserError {
-        var klass = (ObjectClass) this.get_type ().class_ref ();
-        var spec = klass.find_property (prop_name);
-
-        if (spec == null) {
-            throw new Utlib.ParserError.PROPERTY_NOT_FOUND (
-                @"$(klass.get_name ()) has no $prop_name property"
-            );
-        }
-
-        string param_value = "";
-
-        switch (spec.value_type) {
-            case Type.STRING:
-                debug (@"$prop_name is string");
-
-                Value? val = Value (spec.value_type);
-                this.get_property (prop_name, ref val);
-
-                param_value = val.get_string ();
-
-                if (param_value == null) {
-                    debug (@"$prop_name's value is null");
-                    param_value = "";
-                }
-
-                break;
-            default:
-                return null;
-        }
-
-        if (param.is_required && param_value == "") {
-            debug (@"$(param.name) is required and is not setted");
-
-            if (param.default_value == "") {
-                throw new Utlib.ParserError.REQUIRED_PARAM_NOT_SET (
-                    @"$(param.name) is required but it is not setted and has no default value"
-                );
-            } else {
-                param_value = param.default_value;
-            }
-        }
-
-        return param_value == "" ? null : @"$(param.name)=$(param_value)";
     }
 }
