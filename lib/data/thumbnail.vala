@@ -15,12 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Utlib {
+public class Utlib.Thumbnail : Object {
 
-    public class Thumbnail : Object {
-
-        public string url { get; set; }
-        public uint width { get; set; }
-        public uint height { get; set; }
-    }
+    public string url { get; set; }
+    public uint width { get; set; }
+    public uint height { get; set; }
 }

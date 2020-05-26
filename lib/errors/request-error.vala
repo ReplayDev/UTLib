@@ -15,9 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Utlib {
-
-    public errordomain RequestError {
-        SERVER_ERROR
-    }
+public errordomain Utlib.RequestError {
+    SERVER_ERROR
 }
