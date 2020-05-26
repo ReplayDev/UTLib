@@ -17,6 +17,8 @@ sources = files (
     'responses/page-info.vala',
     'responses/video-list-response.vala',
 
+    'services/parameters-service.vala',
+
     'client.vala'
 )
 
