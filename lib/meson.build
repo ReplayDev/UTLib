@@ -7,7 +7,6 @@ sources = files (
     'errors/parser-error.vala',
     'errors/request-error.vala',
 
-    'requests/parameter.vala',
     'requests/request.vala',
     'requests/video-list-request.vala',
 
@@ -17,6 +16,7 @@ sources = files (
     'responses/page-info.vala',
     'responses/video-list-response.vala',
 
+    'services/parameter.vala',
     'services/parameters-service.vala',
 
     'client.vala'
