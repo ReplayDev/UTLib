@@ -46,89 +46,65 @@ public class Utlib.VideoListRequest : Utlib.Request<Utlib.VideoListResponse> {
     protected override void init_parameters () {
         base.init_parameters ();
 
-        this.request_parameters.set (
-            "part", new Utlib.Parameter () {
-                name = "part",
-                is_required = true,
-                default_value = ""
-            }
-        );
-        this.request_parameters.set (
-            "chart", new Utlib.Parameter () {
-                name = "chart",
-                is_required = false,
-                default_value = ""
-            }
-        );
-        this.request_parameters.set (
-            "id", new Utlib.Parameter () {
-                name = "id",
-                is_required = false,
-                default_value = ""
-            }
-        );
-        this.request_parameters.set (
-            "my-rating", new Utlib.Parameter () {
-                name = "myRating",
-                is_required = false,
-                default_value = ""
-            }
-        );
-        this.request_parameters.set (
-            "hl", new Utlib.Parameter () {
-                name = "hl",
-                is_required = false,
-                default_value = ""
-            }
-        );
-        this.request_parameters.set (
-            "max-height", new Utlib.Parameter () {
-                name = "maxHeight",
-                is_required = false,
-                default_value = ""
-            }
-        );
-        this.request_parameters.set (
-            "max-results", new Utlib.Parameter () {
-                name = "maxResults",
-                is_required = false,
-                default_value = "5"
-            }
-        );
-        this.request_parameters.set (
-            "max-width", new Utlib.Parameter () {
-                name = "maxWidth",
-                is_required = false,
-                default_value = ""
-            }
-        );
-        this.request_parameters.set (
-            "on-behalf-of-content-owner", new Utlib.Parameter () {
-                name = "onBehalfOfContentOwner",
-                is_required = false,
-                default_value = ""
-            }
-        );
-        this.request_parameters.set (
-            "page-token", new Utlib.Parameter () {
-                name = "pageToken",
-                is_required = false,
-                default_value = ""
-            }
-        );
-        this.request_parameters.set (
-            "region-code", new Utlib.Parameter () {
-                name = "regionCode",
-                is_required = false,
-                default_value = ""
-            }
-        );
-        this.request_parameters.set (
-            "video-category-id", new Utlib.Parameter () {
-                name = "videoCategoryId",
-                is_required = false,
-                default_value = "0"
-            }
-        );
+        this.params_service["part"] = new Utlib.Parameter () {
+            name = "part",
+            is_required = true,
+            default_value = ""
+        };
+        this.params_service["chart"] = new Utlib.Parameter () {
+            name = "chart",
+            is_required = false,
+            default_value = ""
+        };
+        this.params_service["id"] = new Utlib.Parameter () {
+            name = "id",
+            is_required = false,
+            default_value = ""
+        };
+        this.params_service["my-rating"] = new Utlib.Parameter () {
+            name = "myRating",
+            is_required = false,
+            default_value = ""
+        };
+        this.params_service["hl"] = new Utlib.Parameter () {
+            name = "hl",
+            is_required = false,
+            default_value = ""
+        };
+        this.params_service["max-height"] = new Utlib.Parameter () {
+            name = "maxHeight",
+            is_required = false,
+            default_value = ""
+        };
+        this.params_service["max-results"] = new Utlib.Parameter () {
+            name = "maxResults",
+            is_required = false,
+            default_value = "5"
+        };
+        this.params_service["max-width"] = new Utlib.Parameter () {
+            name = "maxWidth",
+            is_required = false,
+            default_value = ""
+        };
+        this.params_service["on-behalf-of-content-owner"] = new Utlib.Parameter () {
+            name = "onBehalfOfContentOwner",
+            is_required = false,
+            default_value = ""
+        };
+        this.params_service["page-token"] = new Utlib.Parameter () {
+            name = "pageToken",
+            is_required = false,
+            default_value = ""
+        };
+        this.params_service["region-code"] = new Utlib.Parameter () {
+            name = "regionCode",
+            is_required = false,
+            default_value = ""
+        };
+        this.params_service["video-category-id"] = new Utlib.Parameter () {
+            name = "videoCategoryId",
+            is_required = false,
+            default_value = "0"
+        };
     }
 }
