@@ -15,14 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Gee;
-using Soup;
-using GJson;
+public abstract class Utlib.Request<T> : Object {
 
-public abstract class Utlib.Request<T> : GLib.Object {
-
-    public Client client { get; construct; }
-    protected Map<string, Parameter> request_parameters { get; set; }
+    public Utlib.Client client { get; construct; }
+    protected Gee.Map<string, Utlib.Parameter> request_parameters { get; set; }
 
     public string access_token { get; set; }
     public string callback { get; set; }
@@ -35,8 +31,8 @@ public abstract class Utlib.Request<T> : GLib.Object {
     protected abstract string url { get; }
 
 
-    protected Request (Client client) {
-        GLib.Object (
+    protected Request (Utlib.Client client) {
+        Object (
             client: client
         );
     }
@@ -52,14 +48,14 @@ public abstract class Utlib.Request<T> : GLib.Object {
      *
      * @return The parsed response of this request.
      */
-    public virtual T execute () throws RequestError, ParserError, Error {
+    public virtual T execute () throws Utlib.RequestError, Utlib.ParserError, Error {
         var parameters = this.parse_parameters ();
         var uri = @"$(this.url)?$(parameters)";
 
         debug (@"The parsed url is: $uri");
 
         var session = this.client.session;
-        var message = new Message ("GET", uri);
+        var message = new Soup.Message ("GET", uri);
 
         var istream = session.send (message);
         var distream = new DataInputStream (istream);
@@ -73,10 +69,10 @@ public abstract class Utlib.Request<T> : GLib.Object {
 
         var parsed_object = GJson.Object.parse (builder.str);
 
-        if (message.status_code == Status.OK) {
-            return (T) deserialize_object (typeof (T), parsed_object);
+        if (message.status_code == Soup.Status.OK) {
+            return (T) GJson.deserialize_object (typeof (T), parsed_object);
         } else {
-            throw new RequestError.SERVER_ERROR (
+            throw new Utlib.RequestError.SERVER_ERROR (
                 parsed_object.get_object_member ("error").get_string_member ("message")
             );
         }
@@ -87,7 +83,7 @@ public abstract class Utlib.Request<T> : GLib.Object {
      *
      * @return The parsed response of this request.
      */
-    public virtual async T execute_async () throws RequestError, ParserError, Error {
+    public virtual async T execute_async () throws Utlib.RequestError, Utlib.ParserError, Error {
         // Parse all parameters in the request
         var parameters = this.parse_parameters ();
         var uri = @"$(this.url)?$(parameters)";
@@ -97,7 +93,7 @@ public abstract class Utlib.Request<T> : GLib.Object {
         // Get the session for the current client instance and create a new
         // message
         var session = this.client.session;
-        var message = new Message ("GET", uri);
+        var message = new Soup.Message ("GET", uri);
 
         // Send the message asynchronously and grab the InputStream as a
         // DataInputStream in order to read it
@@ -115,10 +111,10 @@ public abstract class Utlib.Request<T> : GLib.Object {
 
         var parsed_object = yield GJson.Object.parse_async (builder.str);
 
-        if (message.status_code == Status.OK) {
-            return (T) deserialize_object (typeof (T), parsed_object);
+        if (message.status_code == Soup.Status.OK) {
+            return (T) GJson.deserialize_object (typeof (T), parsed_object);
         } else {
-            throw new RequestError.SERVER_ERROR (
+            throw new Utlib.RequestError.SERVER_ERROR (
                 parsed_object.get_object_member ("error").get_string_member ("message")
             );
         }
@@ -127,48 +123,48 @@ public abstract class Utlib.Request<T> : GLib.Object {
     protected virtual void init_parameters () {
         if (request_parameters == null) {
             debug ("request_parameters is null. Creating new instance.");
-            request_parameters = new HashMap<string, Parameter> ();
+            request_parameters = new Gee.HashMap<string, Utlib.Parameter> ();
         }
 
-        this.request_parameters["access-token"] = new Parameter () {
+        this.request_parameters["access-token"] = new Utlib.Parameter () {
             name = "access_token",
             is_required = false,
             default_value = ""
         };
-        this.request_parameters["callback"] = new Parameter () {
+        this.request_parameters["callback"] = new Utlib.Parameter () {
             name = "callback",
             is_required = false,
             default_value = ""
         };
-        this.request_parameters["fields"] = new Parameter () {
+        this.request_parameters["fields"] = new Utlib.Parameter () {
             name = "fields",
             is_required = false,
             default_value = ""
         };
-        this.request_parameters["key"] = new Parameter () {
+        this.request_parameters["key"] = new Utlib.Parameter () {
             name = "key",
             is_required = false,
             default_value = ""
         };
-        this.request_parameters["pretty-print"] = new Parameter () {
+        this.request_parameters["pretty-print"] = new Utlib.Parameter () {
             name = "prettyPrint",
             is_required = false,
             default_value = "true"
         };
-        this.request_parameters["quota-user"] = new Parameter () {
+        this.request_parameters["quota-user"] = new Utlib.Parameter () {
             name = "quotaUser",
             is_required = false,
             default_value = ""
         };
-        this.request_parameters["user-ip"] = new Parameter () {
+        this.request_parameters["user-ip"] = new Utlib.Parameter () {
             name = "userIp",
             is_required = false,
             default_value = ""
         };
     }
 
-    protected string? parse_parameters () throws ParserError {
-        var parsed_parameters = new ArrayList<string> ();
+    protected string? parse_parameters () throws Utlib.ParserError {
+        var parsed_parameters = new Gee.ArrayList<string> ();
 
         foreach (var item in this.request_parameters.entries) {
             var parsed_parameter = this.parse_parameter (item.key, item.value);
@@ -184,12 +180,12 @@ public abstract class Utlib.Request<T> : GLib.Object {
         return string.joinv ("&", parsed_parameters.to_array ());
     }
 
-    private string? parse_parameter (string prop_name, Parameter param) throws ParserError {
+    private string? parse_parameter (string prop_name, Utlib.Parameter param) throws Utlib.ParserError {
         var klass = (ObjectClass) this.get_type ().class_ref ();
         var spec = klass.find_property (prop_name);
 
         if (spec == null) {
-            throw new ParserError.PROPERTY_NOT_FOUND (
+            throw new Utlib.ParserError.PROPERTY_NOT_FOUND (
                 @"$(klass.get_name ()) has no $prop_name property"
             );
         }
@@ -219,7 +215,7 @@ public abstract class Utlib.Request<T> : GLib.Object {
             debug (@"$(param.name) is required and is not setted");
 
             if (param.default_value == "") {
-                throw new ParserError.REQUIRED_PARAM_NOT_SET (
+                throw new Utlib.ParserError.REQUIRED_PARAM_NOT_SET (
                     @"$(param.name) is required but it is not setted and has no default value"
                 );
             } else {
